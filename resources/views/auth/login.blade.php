@@ -1,73 +1,95 @@
-@extends('layouts.app')
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<head>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+    <!-- Meta -->
+    <meta name="description" content="">
+    <meta name="author" content="Themepixels">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/assets/img/favicon.png') }}">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <title>Work Palace Login</title>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+    <link rel="stylesheet" href="{{ asset('assets/admin/lib/remixicon/fonts/remixicon.css') }}">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/style.min.css') }}">
+</head>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+<body class="page-sign">
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+    <div class="card card-sign">
+        <div class="card-header text-center">
+            <a href="{{ url('/') }}" class="header-logo mb-4">Work Palace</a>
+            <h3 class="card-title ">Sign In</h3>
+        </div><!-- card-header -->
+        <div class="card-body">
+            <form method="POST" class="form-horizontal " action="{{ route('login') }}">
+                @csrf
+                <div class="mb-4">
+                    <label class="form-label">Email address</label>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                        placeholder="Email Address">
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
                 </div>
-            </div>
+                <div class="mb-4">
+                    <label class="form-label d-flex justify-content-between">Password <a href="">Forgot
+                            password?</a>
+                    </label>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="current-password">
+
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex custom-checkbox">
+                        <input class="form-check-input" type="checkbox" name="remember" id="customCheck1"
+                            {{ old('remember') ? 'checked' : '' }}>
+
+                        <label class="form-label ms-1" for="customCheck1">
+                            {{ __('Remember Me') }}
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-sign" type="submit">Sign In</button>
+            </form>
+
+
+
         </div>
-    </div>
-</div>
-@endsection
+        <div class="card-footer">
+            Don't have an account? <a href="{{ route('register') }}">Create an Account</a>
+        </div><!-- card-footer -->
+    </div><!-- card -->
+
+    <script src="{{ asset('assets/admin/lib/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        'use script'
+
+        var skinMode = localStorage.getItem('skin-mode');
+        if (skinMode) {
+            $('html').attr('data-skin', 'dark');
+        }
+    </script>
+
+
+</body>
+
+</html>
