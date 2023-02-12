@@ -8,12 +8,7 @@
 
     <!-- Meta -->
     <meta name="description" content="">
-    <meta name="author" content="Themepixels">
-
-
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/assets/img/favicon.png') }}">
+    <meta name="author" content="Work Palace">
 
     <title>Work Palace Register</title>
 
@@ -31,7 +26,7 @@
             <h3 class="card-title">Sign Up</h3>
         </div><!-- card-header -->
         <div class="card-body">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('createEmployer') }}">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Name</label>
@@ -57,17 +52,19 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="new-password">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Confirm Password</label>
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                        required autocomplete="new-password">
                 </div>
 
                 <div class="mb-4">
@@ -77,7 +74,8 @@
                 </div>
                 <button class="btn btn-primary btn-sign" type="submit">Create Account</button>
                 <div class="card-footer">
-                    Already have an account? <a href="{{ route('login') }}">Sign In</a>
+                    Already have an account? <a href="{{ route('login') }}">Sign In</a> or
+                    Create an Account as <a href="{{ route('register') }}">Freelancer</a>
                 </div>
             </form>
 

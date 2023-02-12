@@ -8,12 +8,9 @@
 
     <!-- Meta -->
     <meta name="description" content="">
-    <meta name="author" content="Themepixels">
+    <meta name="author" content="Work Palace">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/assets/img/favicon.png') }}">
-
-    <title>Work Palace Login</title>
+      <title>Work Palace Login</title>
 
     <link rel="stylesheet" href="{{ asset('assets/admin/lib/remixicon/fonts/remixicon.css') }}">
 
@@ -29,6 +26,11 @@
             <h3 class="card-title ">Sign In</h3>
         </div><!-- card-header -->
         <div class="card-body">
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
             <form method="POST" class="form-horizontal " action="{{ route('login') }}">
                 @csrf
                 <div class="mb-4">
@@ -74,8 +76,10 @@
 
         </div>
         <div class="card-footer">
-            Don't have an account? <a href="{{ route('register') }}">Create an Account</a>
-        </div><!-- card-footer -->
+            Don't have an account? Create an Account as <a href="{{ route('register') }}">Freelancer</a> or
+            <a href="{{ url('employer_account') }}">Employer</a>
+        </div>
+        <!-- card-footer -->
     </div><!-- card -->
 
     <script src="{{ asset('assets/admin/lib/jquery/jquery.min.js') }}"></script>

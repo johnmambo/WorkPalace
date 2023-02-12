@@ -5,17 +5,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Meta -->
     <meta name="description" content="">
-    <meta name="author" content="Themepixels">
+    <meta name="author" content="Work Palace">
 
-
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/assets/img/favicon.png') }}">
-
-    <title>Work Palace Register</title>
+    <title>Freelancer Register</title>
 
     <link rel="stylesheet" href="{{ asset('assets/admin/lib/remixicon/fonts/remixicon.css') }}">
 
@@ -31,7 +25,7 @@
             <h3 class="card-title">Sign Up</h3>
         </div><!-- card-header -->
         <div class="card-body">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('createFreelancer') }}">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Name</label>
@@ -77,7 +71,8 @@
                 </div>
                 <button class="btn btn-primary btn-sign" type="submit">Create Account</button>
                 <div class="card-footer">
-                    Already have an account? <a href="{{ route('login') }}">Sign In</a>
+                    Already have an account? <a href="{{ route('login') }}">Sign In</a> or 
+                    Create an Account as <a href="{{ url('employer_account') }}">Employer</a>
                 </div>
             </form>
 
