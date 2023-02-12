@@ -22,7 +22,7 @@
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('assets/welcome/dist/css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/welcome/dist/css/main.css') }}">
 </head>
 
 {{-- <body class="antialiased">
@@ -51,13 +51,13 @@
     <nav class="navbar navbar-expand-xl">
         <div class="container-xxl justify-content-md-start">
             <a class="navbar-brand" href="index.html">
-                <img src="assets/logo.svg" alt="" />
+                <img src="{{ asset('assets/logo.svg') }}" alt="" />
             </a>
             <!-- /.navbar-brand -->
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <img src="assets/icons/bars.svg" class="svg-inject svg-icon" alt="" />
+                <img src="{{ asset('assets/icons/bars.svg') }}" class="svg-inject svg-icon" alt="" />
             </button>
             <!-- /.navbar-toggler-mobile -->
 
@@ -149,7 +149,7 @@
 
                 <div class="col-12 col-lg-6 order-1 order-lg-2">
                     <div class="position-relative h-lg-100">
-                        <img src="assets/pages/joblist/header/heroImage.png" class="hero-image-img" alt="" />
+                        <img src="{{ asset('assets/welcome/pages/joblist/header/heroImage.png') }}" class="hero-image-img" alt="" />
                     </div>
                 </div>
                 <!-- /.col -->
@@ -176,7 +176,7 @@
                                     id="checkFulltime" />
                                 <label class="checkbox-type-label" for="checkFulltime">
                                     <div class="checkbox-type-icon">
-                                        <img src="assets/icons/check-circle-stroke.svg" class="svg-inject"
+                                        <img src="{{ asset('assets/icons/check-circle-stroke.svg') }}" class="svg-inject"
                                             alt="" />
                                     </div>
                                     <div class="checkbox-type-text fw-semiBold">Fulltime</div>
@@ -189,7 +189,7 @@
                                     id="checkFreelance" checked />
                                 <label class="checkbox-type-label" for="checkFreelance">
                                     <div class="checkbox-type-icon">
-                                        <img src="assets/icons/check-circle-stroke.svg" class="svg-inject"
+                                        <img src="{{ asset('assets/icons/check-circle-stroke.svg') }}" class="svg-inject"
                                             alt="" />
                                     </div>
                                     <div class="checkbox-type-text fw-semiBold">Freelance</div>
@@ -225,13 +225,13 @@
                         <button
                             class="btn d-flex align-items-center fw-medium text-dark py-12 px-25 border border-1 border-platinum rounded-pill shadow-none">
                             Newest
-                            <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-20 ms-15"
+                            <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-20 ms-15"
                                 alt="" />
                         </button>
                         <!-- /.btn-newest -->
 
                         <button class="btn btn-rounded border border-1 border-platinum shadow-none" role="button">
-                            <img src="assets/icons/filter.svg" class="svg-inject svg-icon text-primary"
+                            <img src="{{ asset('assets/icons/filter.svg') }}" class="svg-inject svg-icon text-primary"
                                 alt="" />
                         </button>
                         <!-- /.btn-filter -->
@@ -245,12 +245,12 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-5.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-5.png') }}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -265,7 +265,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -275,7 +275,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">London, England</h6>
@@ -288,7 +288,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -299,12 +299,12 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse2"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse2">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-1.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-1.png')}}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -319,7 +319,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -329,7 +329,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">Manchester, England</h6>
@@ -342,7 +342,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -353,12 +353,12 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse3"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse3">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-6.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-6.png') }}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -373,7 +373,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -383,7 +383,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">Oxford, England</h6>
@@ -396,7 +396,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -407,12 +407,12 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse4"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse4">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-7.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-7.png')}}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -427,7 +427,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg')}}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -437,7 +437,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg')}}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">London, England</h6>
@@ -450,7 +450,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -461,12 +461,13 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse5"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse5">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" 
+                        class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-8.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-8.png') }}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -481,7 +482,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -491,7 +492,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg')}}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">London, England</h6>
@@ -504,7 +505,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -515,12 +516,12 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse6"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse6">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-9.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-9.png') }}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -535,7 +536,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -545,7 +546,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">London, England</h6>
@@ -558,7 +559,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -569,12 +570,12 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse7"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse7">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-10.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-10.png')}}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -589,7 +590,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -599,7 +600,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">London, England</h6>
@@ -612,7 +613,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -623,12 +624,12 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse8"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse8">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-11.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-11.png')}}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -643,7 +644,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg')}}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -653,7 +654,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg')}}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">London, England</h6>
@@ -666,7 +667,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -677,12 +678,12 @@
                         class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
                         type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse9"
                         aria-expanded="false" aria-controls="jobInfoCardCollapse9">
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-16"
+                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-16"
                             alt="" />
                     </button>
                     <div class="job-info">
                         <div class="job-image">
-                            <img src="assets/job-logo/job-logo-12.png" alt="" />
+                            <img src="{{ asset('assets/job-logo/job-logo-12.png')}}" alt="" />
                         </div>
                         <div class="job-info-inner">
                             <h5 class="job-title">
@@ -697,7 +698,7 @@
                         <div class="job-info-card">
                             <div class="info-card">
                                 <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="assets/icons/sack-dollar.svg" class="svg-inject svg-icon"
+                                    <img src="{{ asset('assets/icons/sack-dollar.svg')}}" class="svg-inject svg-icon"
                                         alt="" />
                                 </div>
                                 <div class="info-card-content">
@@ -707,7 +708,7 @@
                             </div>
                             <div class="info-card">
                                 <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="assets/icons/mark.svg" class="svg-inject svg-icon" alt="" />
+                                    <img src="{{ asset('assets/icons/mark.svg')}}" class="svg-inject svg-icon" alt="" />
                                 </div>
                                 <div class="info-card-content">
                                     <h6 class="info-card-title">London, England</h6>
@@ -720,7 +721,7 @@
                         <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
                             href="jobdetail.html">Apply Now</a>
                         <button class="btn btn-rounded btn-book">
-                            <img src="assets/icons/heart.svg" class="svg-inject svg-icon is-20" alt="" />
+                            <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject svg-icon is-20" alt="" />
                         </button>
                     </div>
                 </div>
@@ -731,7 +732,7 @@
             <div class="d-flex justify-content-center mt-60">
                 <nav class="pagination-container" aria-label="Page navigation example">
                     <a href="#" class="page-link previous">
-                        <img src="assets/icons/angles-left.svg" class="svg-inject" alt="" />
+                        <img src="{{ asset('assets/icons/angles-left.svg')}}" class="svg-inject" alt="" />
                         Previous
                     </a>
                     <ul class="pagination bg-lavender-web-100">
@@ -742,7 +743,7 @@
                     </ul>
                     <a href="#" class="page-link next">
                         Next
-                        <img src="assets/icons/angles-right.svg" class="svg-inject" alt="" />
+                        <img src="{{ asset('assets/icons/angles-right.svg')}}" class="svg-inject" alt="" />
                     </a>
                 </nav>
             </div>
@@ -769,10 +770,10 @@
                     class="d-flex align-items-center justify-content-between justify-content-md-start ms-md-auto gap-15">
                     <button
                         class="btn d-flex align-items-center fw-medium text-dark py-12 px-25 border border-1 border-platinum rounded-pill shadow-none">
-                        <img src="assets/icons/calendar.svg" class="svg-inject text-primary is-20 me-15"
+                        <img src="{{ asset('assets/icons/calendar.svg')}}" class="svg-inject text-primary is-20 me-15"
                             alt="" />
                         Filter Date
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-20 ms-15"
+                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-20 ms-15"
                             alt="" />
                     </button>
                     <!-- /.btn-filter-date -->
@@ -780,7 +781,7 @@
                     <button
                         class="btn d-flex align-items-center fw-medium text-dark py-12 px-25 border border-1 border-platinum rounded-pill shadow-none">
                         Newest
-                        <img src="assets/icons/chevron-down.svg" class="svg-inject text-primary is-20 ms-15"
+                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-20 ms-15"
                             alt="" />
                     </button>
                     <!-- /.btn-newest -->
@@ -791,7 +792,7 @@
                 <div class="col-12 col-md-6 col-xl-4 my-15">
                     <div class="event-card complete">
                         <div class="event-thumb">
-                            <img src="assets/event-thumb/event-thumb-1.png" alt="event-1" />
+                            <img src="{{ asset('assets/event-thumb/event-thumb-1.png')}}" alt="event-1" />
                         </div>
                         <div class="event-content">
                             <div class="event-content-header">
@@ -801,7 +802,7 @@
                                         <span>NOV</span>
                                     </div>
                                     <button class="btn btn-event-book" type="button">
-                                        <img src="assets/icons/check-circle-stroke-full.svg" class="svg-inject"
+                                        <img src="{{ asset('assets/icons/check-circle-stroke-full.svg')}}" class="svg-inject"
                                             alt="" />
                                     </button>
                                 </div>
@@ -830,7 +831,7 @@
                 <div class="col-12 col-md-6 col-xl-4 my-15">
                     <div class="event-card">
                         <div class="event-thumb">
-                            <img src="assets/event-thumb/event-thumb-2.png" alt="event-2" />
+                            <img src="{{asset('assets/event-thumb/event-thumb-2.png')}}" alt="event-2" />
                         </div>
                         <div class="event-content">
                             <div class="event-content-header">
@@ -840,7 +841,7 @@
                                         <span>NOV</span>
                                     </div>
                                     <button class="btn btn-event-book" type="button">
-                                        <img src="assets/icons/heart.svg" class="svg-inject" alt="" />
+                                        <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject" alt="" />
                                     </button>
                                 </div>
                                 <div class="event-content-info">
@@ -868,7 +869,7 @@
                 <div class="col-12 col-md-6 col-xl-4 my-15">
                     <div class="event-card">
                         <div class="event-thumb">
-                            <img src="assets/event-thumb/event-thumb-3.png" alt="event-3" />
+                            <img src="{{ asset('assets/event-thumb/event-thumb-3.png')}}" alt="event-3" />
                         </div>
                         <div class="event-content">
                             <div class="event-content-header">
@@ -878,7 +879,7 @@
                                         <span>NOV</span>
                                     </div>
                                     <button class="btn btn-event-book" type="button">
-                                        <img src="assets/icons/heart.svg" class="svg-inject" alt="" />
+                                        <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject" alt="" />
                                     </button>
                                 </div>
                                 <div class="event-content-info">
@@ -920,23 +921,23 @@
             <div class="swiper image-slider client-logo-slider mx-xl-34 mx-xxl-80">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="assets/client-logo/client-logo-1.png" alt="" />
+                        <img src="{{ asset('assets/client-logo/client-logo-1.png')}}" alt="" />
                     </div>
 
                     <div class="swiper-slide">
-                        <img src="assets/client-logo/client-logo-2.png" alt="" />
+                        <img src="{{ asset('assets/client-logo/client-logo-2.png')}}" alt="" />
                     </div>
 
                     <div class="swiper-slide">
-                        <img src="assets/client-logo/client-logo-3.png" alt="" />
+                        <img src="{{ asset('assets/client-logo/client-logo-3.png')}}" alt="" />
                     </div>
 
                     <div class="swiper-slide">
-                        <img src="assets/client-logo/client-logo-4.png" alt="" />
+                        <img src="{{ asset('assets/client-logo/client-logo-4.png')}}" alt="" />
                     </div>
 
                     <div class="swiper-slide">
-                        <img src="assets/client-logo/client-logo-5.png" alt="" />
+                        <img src="{{ asset('assets/client-logo/client-logo-5.png')}}" alt="" />
                     </div>
                 </div>
             </div>
@@ -973,7 +974,7 @@
             <div class="row py-20 py-xl-80">
                 <div class="col-12 col-xl-4 footer-widget about">
                     <div class="footer-brand">
-                        <img src="assets/logo-footer.svg" alt="logo" />
+                        <img src="{{ asset('assets/logo-footer.svg')}}" alt="logo" />
                     </div>
                     <p class="footer-description mt-34">Ziro is a Freelance Landing Website lorem ipsum dolor sit amet,
                         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -981,27 +982,27 @@
                     <ul class="social-btn-group mt-34">
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="assets/icons/facebook-f.svg" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/facebook-f.svg')}}" class="svg-inject svg-icon" alt="" />
                             </a>
                         </li>
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="assets/icons/twitter.svg" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/twitter.svg')}}" class="svg-inject svg-icon" alt="" />
                             </a>
                         </li>
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="assets/icons/youtube.svg" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/youtube.svg')}}" class="svg-inject svg-icon" alt="" />
                             </a>
                         </li>
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="assets/icons/linkedin.svg" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/linkedin.svg')}}" class="svg-inject svg-icon" alt="" />
                             </a>
                         </li>
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="assets/icons/instagram.svg" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/instagram.svg')}}" class="svg-inject svg-icon" alt="" />
                             </a>
                         </li>
                     </ul>
@@ -1085,19 +1086,19 @@
                     <h6 class="footer-title">Get in Touch with Us</h6>
                     <ul class="footer-link-list _icon">
                         <li class="link-item">
-                            <img src="assets/icons/mark-stroke.svg" class="svg-inject svg-icon" alt="" />
+                            <img src="{{ asset('assets/icons/mark-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
                             <a class="link" href="#">
                                 <span>832 Thompson Drive, San Fransisco CA 94107, United States</span>
                             </a>
                         </li>
                         <li class="link-item">
-                            <img src="assets/icons/phone-stroke.svg" class="svg-inject svg-icon" alt="" />
+                            <img src="{{ asset('assets/icons/phone-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
                             <a class="link" href="#">
                                 <span>+123 345123 556</span>
                             </a>
                         </li>
                         <li class="link-item">
-                            <img src="assets/icons/envelope-stroke.svg" class="svg-inject svg-icon" alt="" />
+                            <img src="{{ asset('assets/icons/envelope-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
                             <a class="link" href="#">
                                 <span>support@ziro.id</span>
                             </a>
