@@ -10,8 +10,8 @@ class Alljobs extends Component
     public function render()
     {
        
-            $jobs = Job::all();
+           
      
-        return view('livewire.user.jobs.alljobs', compact('jobs'));
+        return view('livewire.user.jobs.alljobs');
     }
 }

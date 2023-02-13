@@ -7,6 +7,11 @@
             <div class="card card-one">
                 <div class="card-header">
                     <h6 class="card-title">All My Jobs</h6>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <nav class="nav nav-icon nav-icon-sm ms-auto">
                         <a href="#" class="nav-link"><i class="ri-refresh-line"></i></a>
                         <a href="#" class="nav-link"><i class="ri-more-2-fill"></i></a>
@@ -31,9 +36,9 @@
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->status }}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-primary">View</button>
-                                            <button class="btn btn-sm btn-info">Update</button>
-                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                            <a href="{{ route('user.single-job',$job->id) }}"><button class="btn btn-sm btn-primary">Edit</button></a>
+                                            <a href="{{ route('user.delete-single-job',$job->id) }}"><button class="btn btn-sm btn-danger">Delete</button></a>                                           
+                                            
                                         </td>
                                     </tr>
                                 @endforeach

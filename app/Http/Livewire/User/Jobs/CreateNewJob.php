@@ -16,6 +16,7 @@ class CreateNewJob extends Component
     public $skills;
     public $hourly_pay;
     public $project_pay;
+    public $status;
 
     public function mount()
     {
@@ -96,10 +97,11 @@ class CreateNewJob extends Component
         $new->skills = $this->skills;
         $new->hourly_pay = $this->hourly_pay;
         $new->project_pay = $this->project_pay;
+        $new->status = 'draft';
         $new->save();
 
         
-        return view('livewire.user.jobs.alljobs')->with('success', 'Job Details added successfully');
+        return redirect()->route('user.alljobs')->with('success', 'Job Details added successfully');
     }
 
 }
