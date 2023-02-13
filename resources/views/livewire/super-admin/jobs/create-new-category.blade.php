@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-xl-10">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
                     @if (session()->has('success'))
@@ -12,7 +12,7 @@
                     <form class="needs-validation" method="POST" action="{{ route('superadmin.createJobCategory') }}">
                         @csrf
                         <div class="row">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="validationCustom01" class="form-label">Category Name</label>
                                     <input id="validationCustom01" type="text"
