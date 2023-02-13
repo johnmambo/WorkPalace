@@ -40,6 +40,15 @@
                             <a href="{{ route('user.alljobs') }}" class="nav-link"><i class="ri-shopping-bag-3-line"></i>
                                 <span>All Jobs</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="ri-coin-line"></i>
+                                <span>Payments </span></a>
+                            <nav class="nav nav-sub2">
+                                <a href="#" class="nav-sub-link"> All Paymets</a>
+                                <a href="#" class="nav-sub-link">Completed Payments</a>
+                                <a href="#"class="nav-sub-link">Pending Payments</a>
+                            </nav>
+                        </li>
                     @endrole
                     @role('superadmin')
                         <li class="nav-item">
@@ -50,14 +59,62 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link has-sub"><i class="ri-pencil-ruler-2-line"></i>
                                 <span>Job Categories</span></a>
-                            <nav class="nav nav-sub">
+                            <nav class="nav nav-subs">
                                 <a href="{{ route('superadmin.create.category') }}" class="nav-sub-link">Create Category</a>
-                                <a href="http://themepixels.me/demo/dashbyte/docs/layout-columns.html"
-                                    class="nav-sub-link">Columns</a>
-                                <a href="http://themepixels.me/demo/dashbyte/docs/layout-gutters.html"
-                                    class="nav-sub-link">Gutters</a>
+                                <a href="#" class="nav-sub-link">All Categories</a>
                             </nav>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="ri-shopping-bag-3-line"></i>
+                                <span>Jobs</span></a>
+
+                            <nav class="nav nav-sub1">
+                                <a href="#" class="nav-sub-link">All Jobs</a>
+                                <a href="#" class="nav-sub-link">Completed Jobs</a>
+                                <a href="#"class="nav-sub-link">Pending Jobs</a>
+                            </nav>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="ri-coin-line"></i>
+                                <span>Payments </span></a>
+                            <nav class="nav nav-sub2">
+                                <a href="#" class="nav-sub-link">All Payments</a>
+                                <a href="#" class="nav-sub-link">Completed Payments</a>
+                                <a href="#"class="nav-sub-link">Pending Payments</a>
+                            </nav>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="ri-service-line"></i>
+                                <span>Users</span></a>
+                            <nav class="nav nav-sub3">
+                                <a href="#" class="nav-sub-link">Admins</a>
+                                <a href="#" class="nav-sub-link">Employers</a>
+                                <a href="#" class="nav-sub-link">Freelancers</a>
+                            </nav>
+                        </li>
+                    @endrole
+                    @role('freelancer')
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="ri-shopping-bag-3-line"></i>
+                            <span>Jobs</span></a>
+
+                        <nav class="nav nav-sub1">
+                            <a href="#" class="nav-sub-link">All Jobs</a>
+                            <a href="#" class="nav-sub-link">My Completed Jobs</a>
+                            <a href="#"class="nav-sub-link">My Pending Jobs</a>
+                        </nav>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"><i class="ri-coin-line"></i>
+                            <span>Payments </span></a>
+                        <nav class="nav nav-sub2">
+                            <a href="#" class="nav-sub-link">All my Payments</a>
+                            <a href="#" class="nav-sub-link">Completed Payments</a>
+                            <a href="#"class="nav-sub-link">Pending Payments</a>
+                        </nav>
+                    </li>
                     @endrole
                 </ul>
             </div><!-- sidebar-body -->
@@ -101,7 +158,8 @@
                     <ul class="list-group">
                         <li class="list-group-item">
                             <div class="avatar online"><img
-                                    src="http://themepixels.me/demo/dashbyte/assets/img/img10.jpg" alt=""></div>
+                                    src="http://themepixels.me/demo/dashbyte/assets/img/img10.jpg" alt="">
+                            </div>
                             <div class="list-group-body">
                                 <p><strong>Dominador Manuel</strong> and <strong>100 other people</strong> reacted to
                                     your
@@ -112,7 +170,8 @@
                         </li>
                         <li class="list-group-item">
                             <div class="avatar online"><img
-                                    src="http://themepixels.me/demo/dashbyte/assets/img/img11.jpg" alt=""></div>
+                                    src="http://themepixels.me/demo/dashbyte/assets/img/img11.jpg" alt="">
+                            </div>
                             <div class="list-group-body">
                                 <p><strong>Angela Ighot</strong> tagged you and <strong>9 others</strong> in a post.</p>
                                 <span>Aug 18 10:30am</span>
