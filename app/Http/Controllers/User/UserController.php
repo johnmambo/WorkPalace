@@ -20,4 +20,12 @@ class UserController extends Controller
     public function userdash(){
         return view('user.dashboard');
     }
+    public function newJob(){
+        return view('user.jobs.create-new-job');
+    }
+    public function allJobCategories(){
+        $jobcategories=JobCategory::all()
+        return view('user.jobs.create-new-job')->compact(jobcategory $jobcategories);
+    }
+
 }

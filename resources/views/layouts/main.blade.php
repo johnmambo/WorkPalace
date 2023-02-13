@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
 
     <!-- Required meta tags -->
@@ -11,38 +9,54 @@
 
     <!-- Meta -->
     <meta name="description" content="">
-    <meta name="author" content="Themepixels">
+    <meta name="author" content="Work Palace">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/admin/assets/img/favicon.png') }}">
-
-    <title>DashByte - Premium Dashboard Template</title>
+    <title>@yield('title')</title>
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/lib/remixicon/fonts/remixicon.css') }}">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/style.min.css') }}">
+    @livewireStyles
 </head>
 
 <body>
 
     <div class="sidebar">
         <div class="sidebar-header">
-            <a href="#" class="sidebar-logo">dashbyte</a>
+            <a href="#" class="sidebar-logo">Work Palace</a>
         </div><!-- sidebar-header -->
         <div id="sidebarMenu" class="sidebar-body">
             <div class="nav-group show">
                 <a href="#" class="nav-label">Dashboard</a>
                 <ul class="nav nav-sidebar">
-                    <li class="nav-item">
-                        <a href="finance.html" class="nav-link"><i class="ri-pie-chart-2-line"></i> <span>Finance
-                                Monitoring</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="events.html" class="nav-link"><i class="ri-calendar-todo-line"></i> <span>Events
-                                Management</span></a>
-                    </li>
+                    @role('user')
+                        <li class="nav-item">
+                            <a href="{{ route('user.new-job') }}" class="nav-link"><i class="ri-pie-chart-2-line"></i>
+                                <span>Add Job</span></a>
+                        </li>
+                    @endrole
+                    @role('superadmin')
+                        <li class="nav-item">
+                            <a href="{{ route('superadmin.dashboard')}}" class="nav-link"><i class="ri-calendar-todo-line"></i> 
+                                <span>Dashboard </span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link has-sub"><i class="ri-pencil-ruler-2-line"></i>
+                                <span>Job Categories</span></a>
+                            <nav class="nav nav-sub">
+                                <a href="{{ route('superadmin.create.category')}}"
+                                    class="nav-sub-link">Create Category</a>
+                                <a href="http://themepixels.me/demo/dashbyte/docs/layout-columns.html"
+                                    class="nav-sub-link">Columns</a>
+                                <a href="http://themepixels.me/demo/dashbyte/docs/layout-gutters.html"
+                                    class="nav-sub-link">Gutters</a>
+                            </nav>
+                        </li>
+                    @endrole
+
+
                     <li class="nav-item">
                         <a href="sales.html" class="nav-link"><i class="ri-shopping-bag-3-line"></i> <span>Sales
                                 Monitoring</span></a>
@@ -371,7 +385,6 @@
                         <a href="#"><i class="ri-question-line"></i> Help Center</a>
                         <a href="#"><i class="ri-lock-line"></i> Privacy Settings</a>
                         <a href="#"><i class="ri-user-settings-line"></i> Account Settings</a>
-                        <a href="#"><i class="ri-logout-box-r-line"></i> Log Out</a>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -388,32 +401,14 @@
     </div><!-- header-main -->
 
     <div class="main main-app p-3 p-lg-4">
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <div>
-                <ol class="breadcrumb fs-sm mb-1">
-                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Product Management</li>
-                </ol>
-                <h4 class="main-title mb-0">Welcome to Dashboard</h4>
-            </div>
 
-            <div class="d-flex align-items-center gap-2 mt-3 mt-md-0">
-                <button type="button" class="btn btn-white btn-icon"><i
-                        class="ri-share-line fs-18 lh-1"></i></button>
-                <button type="button" class="btn btn-white btn-icon"><i
-                        class="ri-printer-line fs-18 lh-1"></i></button>
-                <button type="button" class="btn btn-primary d-flex align-items-center gap-2"><i
-                        class="ri-bar-chart-2-line fs-18 lh-1"></i>Generate<span class="d-none d-sm-inline">
-                        Report</span></button>
-            </div>
-        </div>
 
-        <div class="row g-3">
+        <div class="row g-3" style="min-height: 50vh">
             @yield('content')
         </div><!-- row -->
 
         <div class="main-footer mt-5">
-            <span>&copy; 2023. Dashbyte. All Rights Reserved.</span>
+            <span>&copy; 2023. All Rights Reserved.</span>
         </div><!-- main-footer -->
     </div><!-- main -->
 
@@ -428,6 +423,7 @@
 
     <script src="{{ asset('assets/admin/assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/admin/assets/js/db.product.js') }}"></script>
+    @livewireScripts
 
 </body>
 

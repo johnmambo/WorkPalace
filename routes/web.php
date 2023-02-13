@@ -42,6 +42,9 @@ Auth::routes();
 
 Route::middleware(['auth', 'role:superadmin'])->name('superadmin.')->prefix('superadmin')->group(function(){
     Route::get('/dashboard', [AdminController::class, 'superadmindash'])->name('dashboard');
+    Route::get('/createcategory', [AdminController::class, 'createcategory'])->name('create.category');
+    Route::post('/createJobCategory', [AdminController::class, 'createJobcategory'])->name('createJobCategory');
+ 
  
 });
 Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('freelancer')->group(function(){
@@ -51,5 +54,6 @@ Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('fre
 
 Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(function(){
     Route::get('/dashboard', [UserController::class, 'userdash'])->name('dashboard');
+    Route::get('/new-job', [UserController::class, 'newJob'])->name('new-job');
  
 });
