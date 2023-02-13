@@ -99,7 +99,7 @@ class CreateNewJob extends Component
         $new->save();
 
         
-        return redirect()->route('user.alljobs')->with('success', 'Job Details added successfully');
+        return view('livewire.user.jobs.alljobs')->with('success', 'Job Details added successfully');
     }
-    
+
 }

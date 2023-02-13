@@ -55,6 +55,6 @@ Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('fre
 Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(function(){
     Route::get('/dashboard', [UserController::class, 'userdash'])->name('dashboard');
     Route::get('/new-job', [UserController::class, 'newJob'])->name('new-job');
-    Route::get('/alljobs', [UserController::class, 'alljobs'])->name('alljobs');
+    Route::get('/alljobs', [UserController::class, 'allJobs'])->name('alljobs');
  
 });

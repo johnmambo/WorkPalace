@@ -36,6 +36,10 @@
                             <a href="{{ route('user.new-job') }}" class="nav-link"><i class="ri-pie-chart-2-line"></i>
                                 <span>Add Job</span></a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user.alljobs') }}" class="nav-link"><i class="ri-shopping-bag-3-line"></i> 
+                                <span>All Jobs</span></a>
+                        </li>
                     @endrole
                     @role('superadmin')
                         <li class="nav-item">
