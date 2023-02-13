@@ -24,6 +24,9 @@ class UserController extends Controller
     public function newJob(){
         return view('user.jobs.create-new-job');
     }
+    public function alljobs(){
+        return view('user.jobs.alljobs');
+    }
     
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User\Jobs;
 use App\Models\JobCategory;
+use App\Models\Job;
 use Livewire\Component;
 
 class CreateNewJob extends Component
@@ -87,12 +88,18 @@ class CreateNewJob extends Component
        
 
         $new = new Job;
+        $new->headline = $this->headline;
+        $new->title = $this->title;
+        $new->user_id = auth()->user()->id;
+        $new->category_id = $this->category_name;
+        $new->description = $this->description;
+        $new->skills = $this->skills;
         $new->hourly_pay = $this->hourly_pay;
-        $user->project_pay = $this->project_pay;
-        
-        $user->save();
+        $new->project_pay = $this->project_pay;
+        $new->save();
 
         
-        return redirect()->route('login')->with('success', '');
+        return redirect()->route('user.alljobs')->with('success', 'Job Details added successfully');
     }
+    
 }
