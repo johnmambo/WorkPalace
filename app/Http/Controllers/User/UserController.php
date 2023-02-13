@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JobCategory;
+use App\Models\Job;
 
 class UserController extends Controller
 {
@@ -24,9 +25,13 @@ class UserController extends Controller
     public function newJob(){
         return view('user.jobs.create-new-job');
     }
-    public function allJobs(){
-        return view('user.jobs.alljobs');
+   
+    public function allJobs()
+    {
+       
+            $jobs = Job::where->id();
+     
+        return view('user.jobs.alljobs', compact('jobs'));
     }
-    
 
 }

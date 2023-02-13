@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('skills');
             $table->string('hourly_pay')->nullabe(); 
             $table->string('project_pay')->nullabe();
+            $table->string('status')->nullable();
             $table->foreign('category_id')->references('id')->on('job_categories')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
