@@ -99,7 +99,7 @@
                             <a href="" class="nav-link"><i class="ri-folder-2-line"></i> <span>Dashboard</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-mail-send-line"></i> <span>Posted
+                            <a href="{{ route('freelancer.postedjobs') }}" class="nav-link"><i class="ri-mail-send-line"></i> <span>Posted
                                     Jobs</span></a>
                         </li>
                         <li class="nav-item">

@@ -23,7 +23,6 @@ Route::get('/', function () {
 });
 Route::get('/employer_account', function () {
     return view('auth.register-employer');
-    
 });
 // Route::post('/createEmployer', function () {
 //     return view('auth.register-employer');
@@ -40,25 +39,21 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['auth', 'role:superadmin'])->name('superadmin.')->prefix('superadmin')->group(function(){
+Route::middleware(['auth', 'role:superadmin'])->name('superadmin.')->prefix('superadmin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'superadmindash'])->name('dashboard');
     Route::get('/createcategory', [AdminController::class, 'createcategory'])->name('create.category');
     Route::post('/createJobCategory', [AdminController::class, 'createJobcategory'])->name('createJobCategory');
- 
- 
 });
-Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('freelancer')->group(function(){
+Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('freelancer')->group(function () {
     Route::get('/dashboard', [FreelancerController::class, 'freelancerdash'])->name('dashboard');
- 
+    Route::get('/all-jobs', [FreelancerController::class, 'alljobs'])->name('postedjobs');
 });
 
-Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(function(){
+Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(function () {
     Route::get('/dashboard', [UserController::class, 'userdash'])->name('dashboard');
     Route::get('/new-job', [UserController::class, 'newJob'])->name('new-job');
     Route::get('/alljobs', [UserController::class, 'allJobs'])->name('alljobs');
     Route::get('jobs/single-job/{id}', [UserController::class, 'singleJob'])->name('single-job');
     Route::post('jobs/update-single-job/{id}', [UserController::class, 'UpdateSingleJob'])->name('update-single-job');
     Route::get('jobs/delete-single-job/{id}', [UserController::class, 'DeleteSingleJob'])->name('delete-single-job');
- 
- 
 });
