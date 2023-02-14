@@ -49,6 +49,7 @@ Route::middleware(['auth', 'role:superadmin'])->name('superadmin.')->prefix('sup
 });
 Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('freelancer')->group(function(){
     Route::get('/dashboard', [FreelancerController::class, 'freelancerdash'])->name('dashboard');
+    Route::get('/alljobs', [FreelancerController::class, 'allJobs'])->name('alljobs');
  
 });
 

@@ -95,26 +95,26 @@
                         </li>
                     @endrole
                     @role('freelancer')
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="ri-shopping-bag-3-line"></i>
-                            <span>Jobs</span></a>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="ri-shopping-bag-3-line"></i>
+                                <span>Jobs</span></a>
 
-                        <nav class="nav nav-sub1">
-                            <a href="#" class="nav-sub-link">All Jobs</a>
-                            <a href="#" class="nav-sub-link">My Completed Jobs</a>
-                            <a href="#"class="nav-sub-link">My Pending Jobs</a>
-                        </nav>
-                    </li>
+                            <nav class="nav nav-sub1">
+                                <a href="{{ route('freelancer.alljobs') }}" class="nav-sub-link">All Jobs</a>
+                                <a href="#" class="nav-sub-link">My Completed Jobs</a>
+                                <a href="#"class="nav-sub-link">My Pending Jobs</a>
+                            </nav>
+                        </li>
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="ri-coin-line"></i>
-                            <span>Payments </span></a>
-                        <nav class="nav nav-sub2">
-                            <a href="#" class="nav-sub-link">All my Payments</a>
-                            <a href="#" class="nav-sub-link">Completed Payments</a>
-                            <a href="#"class="nav-sub-link">Pending Payments</a>
-                        </nav>
-                    </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="ri-coin-line"></i>
+                                <span>Payments </span></a>
+                            <nav class="nav nav-sub2">
+                                <a href="#" class="nav-sub-link">All my Payments</a>
+                                <a href="#" class="nav-sub-link">Completed Payments</a>
+                                <a href="#"class="nav-sub-link">Pending Payments</a>
+                            </nav>
+                        </li>
                     @endrole
                 </ul>
             </div><!-- sidebar-body -->
