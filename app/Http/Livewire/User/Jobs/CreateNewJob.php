@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Livewire\User\Jobs;
+
 use App\Models\JobCategory;
 use App\Models\Job;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class CreateNewJob extends Component
@@ -17,6 +19,9 @@ class CreateNewJob extends Component
     public $hourly_pay;
     public $project_pay;
     public $status;
+    public $payment_category;
+    public $pay_rate;
+    public $task_deadline;
 
     public function mount()
     {
@@ -45,7 +50,8 @@ class CreateNewJob extends Component
     // {
     //     return view('livewire.user.jobs.create-new-job');
     // }
-    public function render(){
+    public function render()
+    {
         $jobcategories = JobCategory::all();
 
         return view('livewire.user.jobs.create-new-job', compact('jobcategories'));
@@ -58,7 +64,7 @@ class CreateNewJob extends Component
                 'headline' => 'required|string|max:300',
                 'title' => 'required|string|max:300',
                 'category_name' => 'required|string|max:300',
-                
+
             ], [
                 'headline.required' => 'Please provide a valid Headline',
                 'title.required' => 'Please provide a valid title',
@@ -69,11 +75,10 @@ class CreateNewJob extends Component
             $this->validate([
                 'description' => 'required|string|max:300',
                 'skills' => 'required|string|max:300',
-                
+
 
             ]);
         }
-        
     }
     public function addJobDetails()
     {
@@ -81,12 +86,16 @@ class CreateNewJob extends Component
         if ($this->currentstep ==  3) {
 
             $this->validate([
-                'hourly_pay' => 'required',
-                'project_pay' => 'required',
-              
+                'payment_category' => 'required',
+                'pay_rate' => 'required|numeric|min:5',
+                'task_deadline' => 'required|after_or_equal:'. Carbon::now()->addHours(6),
+
             ]);
         }
-       
+
+        $time = time();
+        $subtime = substr($time,5);
+        $taskid = auth()->user()->id.''.$subtime;
 
         $new = new Job;
         $new->headline = $this->headline;
@@ -95,13 +104,14 @@ class CreateNewJob extends Component
         $new->category_id = $this->category_name;
         $new->description = $this->description;
         $new->skills = $this->skills;
-        $new->hourly_pay = $this->hourly_pay;
-        $new->project_pay = $this->project_pay;
+        $new->payment_category = $this->payment_category;
+        $new->pay_rate = $this->pay_rate;
         $new->status = 'draft';
+        $new->job_id = $taskid;
+        $new->task_deadline = $this->task_deadline;
         $new->save();
 
-        
+
         return redirect()->route('user.alljobs')->with('success', 'Job Details added successfully');
     }
-
 }
