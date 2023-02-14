@@ -10,27 +10,27 @@ use Illuminate\Support\Facades\Auth;
 
 class FreelancerController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware(['auth', 'role:freelancer']);
-    // }
-    // public function checkauth()
-    // {
-    //     $user = auth()->user();
-    //     return $user;
-    // }
+
     public function freelancerdash()
     {
        
         $user = Auth::user();
 
-        $jobs = Job::where([
-                            ['id', $user->id],
-                            ['status', 'active']
-                            ])->get();
+        $activejobs = Job::all();
 
-        return view('freelancer.dashboard', compact('jobs'));
+
+
+        $completejobs = Job::where([
+                            ['id', $user->id],
+                            ['status', 'complete']
+                            ])->get();        
+        
+        $alljobs = Job::all();
+        
+
+        return view('freelancer.dashboard', compact('activejobs', 'completejobs', 'alljobs'));
     }
+   
     public function allJobs(){
         
         $jobs = Job::all();  
@@ -38,8 +38,12 @@ class FreelancerController extends Controller
         return view('freelancer.jobs.alljobs', compact('jobs'));
     }
 
-    public function singlejob(){
-        return view('freelancer.jobs.singlejob');
+    public function singlejob($id){
+
+        $job = Job::findOrFail($id);
+       
+
+        return view('freelancer.jobs.singlejob', compact('job'));
     }
     public function completejobs(){
         
@@ -47,7 +51,7 @@ class FreelancerController extends Controller
 
         $jobs = Job::where([
                             ['id', $user->id],
-                            ['status', 'active']
+                            ['status', 'complete']
                             ])->get();
 
         return view('freelance.jobs.compeletejobs', compact('jobs'));

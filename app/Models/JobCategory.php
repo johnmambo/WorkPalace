@@ -13,4 +13,10 @@ class JobCategory extends Model
         'category_name',
        
     ];
+        public function jobCategories()
+    {
+        return $this->hasMany(Job::class);
+    }
+
+  
 }

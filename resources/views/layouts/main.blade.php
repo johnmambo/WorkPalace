@@ -9,7 +9,7 @@
 
     <!-- Meta -->
     <meta name="description" content="">
-    <meta name="author" content="Work Palace">
+    <meta name="author" content="StudyProfessors">
 
     <title>@yield('title')</title>
 
@@ -27,7 +27,7 @@
 
     <div class="sidebar">
         <div class="sidebar-header">
-            <a href="#" class="sidebar-logo">Work Palace</a>
+            <a href="#" class="sidebar-logo">StudyProfessors</a>
         </div><!-- sidebar-header -->
         <div id="sidebarMenu" class="sidebar-body">
             <div class="nav-group show">

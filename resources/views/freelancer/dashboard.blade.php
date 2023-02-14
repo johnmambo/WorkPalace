@@ -1,38 +1,38 @@
 @extends('layouts.main')
 @section('title', 'Freelancer | Dashboard')
 @section('content')
-    <div class="col-6 col-xl-3">
-        <div class="card card-one">
-            <div class="card-body">
-                <label class="card-title fs-sm fw-medium mb-1">All Jobs</label>
-                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i>
-                    @foreach ($jobs as $item)
-                    {{ $item->count() }}
 
-                </h3>
+        <div class="col-6 col-xl-3">
+            <div class="card card-one">
+                <div class="card-body">
+                    <label class="card-title fs-sm fw-medium mb-1">All Jobs</label>
+                    <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i>
+                    </h3>
 
-            </div><!-- card-body -->
-        </div><!-- card-one -->
-    </div><!-- col -->
+                </div><!-- card-body -->
+            </div><!-- card-one -->
+        </div><!-- col -->
 
 
+        @foreach ($activejobs as $item)
+            <div class="col-6 col-xl-3">
+                <div class="card card-one">
+                    <div class="card-body">
+                        <label class="card-title fs-sm fw-medium mb-1">Active Tasks</label>
 
-    <div class="col-6 col-xl-3">
-        <div class="card card-one">
-            <div class="card-body">
-                <label class="card-title fs-sm fw-medium mb-1">Active Tasks</label>
+                        <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i>
 
-                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i>
-                    
-                    
-                        {{ $item->count() }}
-                    @endforeach
-                </h3>
 
-            </div><!-- card-body -->
-        </div><!-- card-one -->
-    </div><!-- col -->
+                            {{ $item->count() }}
 
+
+                        </h3>
+
+                    </div><!-- card-body -->
+                </div><!-- card-one -->
+            </div><!-- col -->
+        @endforeach
+    
     <div class="col-6 col-xl-3">
         <div class="card card-one">
             <div class="card-body">
@@ -66,13 +66,43 @@
                             <h3 class="card-value mb-2"><span></span>83</h3>
                             <label class="card-title fw-semibold text-dark mb-2">Posted This Month</label>
 
-                        </div><!-- col -->
+                            {{-- <script type="text/javascript">
+                                google.charts.load('current', {
+                                    'packages': ['bar']
+                                });
+                                google.charts.setOnLoadCallback(drawChart);
+                        
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Job Id'],
+                        
+                                        @php
+                                        foreach ($alljobs as $key) {
+                                            echo "['" . $key->title . "'],";
+                                        }
+                                        @endphp
+                                    ]);
+                        
+                                    var options = {
+                                        chart: {
+                                            title: 'Bar Graph | Price',
+                                            subtitle: ', and Product Name: @php echo $key[0]->created_at @endphp',
+                                        },
+                                        bars: 'vertical'
+                                    };
+                                    var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+                                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                                }
+                        
+                            </script> --}}
+                            //this
+                        </div>
                         <div class="col-sm-6">
                             <h3 class="card-value mb-2"><span></span>19</h3>
                             <label class="card-title fw-semibold text-dark mb-2">Posted Last Month</label>
 
-                        </div><!-- col -->
-                    </div><!-- row -->
+                        </div>
+                    </div>
                 </div>
             </div><!-- card-body -->
         </div><!-- card -->

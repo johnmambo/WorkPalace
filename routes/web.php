@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Freelancer\FreelancerController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +25,7 @@ Route::get('/', function () {
 Route::get('/employer_account', function () {
     return view('auth.register-employer');
 });
-// Route::post('/createEmployer', function () {
-//     return view('auth.register-employer');
-// });
+
 Route::post('/createEmployer', [PagesController::class, 'createEmployer'])->name('createEmployer');
 Route::post('/createFreelancer', [PagesController::class, 'createFreelancer'])->name('createFreelancer');
 
