@@ -52,6 +52,7 @@ Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('fre
 Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(function () {
     Route::get('/dashboard', [UserController::class, 'userdash'])->name('dashboard');
     Route::get('/new-job', [UserController::class, 'newJob'])->name('new-job');
+    Route::get('/publish-task/{slug}', [UserController::class, 'publishjob'])->name('publish-job');
     Route::get('/new-job-attachment/{slug}', [UserController::class, 'newJobattachments'])->name('new-job-attachments');
     Route::get('/alljobs', [UserController::class, 'allJobs'])->name('alljobs');
     Route::get('/draft-jobs', [UserController::class, 'draftjobs'])->name('draftjobs');

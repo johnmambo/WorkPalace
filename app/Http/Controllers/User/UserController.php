@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\JobCategory;
 use App\Models\Job;
 
+use Brian2694\Toastr\Facades\Toastr;
+
 class UserController extends Controller
 {
     public function __construct()
@@ -37,6 +39,15 @@ class UserController extends Controller
         Toastr::warning('An error occured', 'Alert', ["positionClass" => "toast-bottom-right"]);
         return redirect()->route('user.alljobs');
        }
+    }
+    public function publishjob($slug)
+    {
+       $checktask = Job::where(['job_id'=>$slug, 'user_id'=>auth()->user()->id])->first();
+       $checktask->status="active";
+       $checktask->save();
+        Toastr::success('Job is now visible on the main website', 'Congrats', ["positionClass" => "toast-bottom-right"]);
+        return redirect()->route('user.alljobs');
+
     }
     public function allJobs()
     {

@@ -45,7 +45,7 @@
                                     <div class="form-group" class="d-flex flex-row justify-content-end">
                                         <button type="submit" class="btn btn-sm btn-success mt-2">Upload
                                             Attachment</button>
-                                        <a href="">Skip and Publish This Task</a>
+                                        <a href="{{ route('user.publish-job', $job->job_id) }}" class="text-danger">Skip and Publish This Task</a>
                                     </div>
 
                                 </div>
