@@ -89,4 +89,10 @@ class FreelancerController extends Controller
         return view('freelancer.payments.pendingpayments');
         
     }
+    public function disputedpayments(){
+        
+
+        return view('freelancer.payments.disputedpayments');
+        
+    }
 }

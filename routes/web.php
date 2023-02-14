@@ -41,8 +41,19 @@ Auth::routes();
 Route::middleware(['auth', 'role:superadmin'])->name('superadmin.')->prefix('superadmin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'superadmindash'])->name('dashboard');
     Route::get('/createcategory', [AdminController::class, 'createcategory'])->name('create.category');
-    Route::post('/createJobCategory', [AdminController::class, 'createJobcategory'])->name('createJobCategory');
+    Route::any('/createJobCategory', [AdminController::class, 'createJobcategory'])->name('createJobCategory');
+    Route::get('/alljobcategories', [AdminController::class, 'alljobcategories'])->name('alljobcategories');
+    Route::get('/deletejobcategory/{id}', [AdminController::class, 'deletejobcategory'])->name('deletejobcategory');
+    Route::get('/alljobs', [AdminController::class, 'alljobs'])->name('alljobs');
+    Route::get('/viewjob/{id}', [AdminController::class, 'viewjob'])->name('viewjob');
+    Route::get('/deletejob/{id}', [AdminController::class, 'deletejob'])->name('deletejob');
+
+    Route::get('/allcompletejobs', [AdminController::class, 'allcompletejobs'])->name('allcompletejobs');
+    Route::get('/jobsinprogress', [AdminController::class, 'jobsinprogress'])->name('jobsinprogress');
+    Route::get('/jobsasdrafts', [AdminController::class, 'jobsasdrafts'])->name('jobsasdrafts');
 });
+
+
 Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('freelancer')->group(function () {
     Route::get('/dashboard', [FreelancerController::class, 'freelancerdash'])->name('dashboard');
     Route::get('/all-jobs', [FreelancerController::class, 'alljobs'])->name('postedjobs');
@@ -52,6 +63,7 @@ Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('fre
     Route::get('/allpayments', [FreelancerController::class, 'allpayments'])->name('allpayments');
     Route::get('/completepayments', [FreelancerController::class, 'completepayments'])->name('completepayments');
     Route::get('/pendingpayments', [FreelancerController::class, 'pendingpayments'])->name('pendingpayments');
+    Route::get('/disputedpayments', [FreelancerController::class, 'disputedpayments'])->name('dispayments');
 });
 
 Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(function () {

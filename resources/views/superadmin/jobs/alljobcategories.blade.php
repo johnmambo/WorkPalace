@@ -1,5 +1,5 @@
 @extends('layouts.main');
-@section('title', 'All-Jobs')
+@section('title', 'All-Job Categories')
 @section('content')
 
     <div>
@@ -17,21 +17,19 @@
                     <table class="table">
                         <thead>
                             <th>id</th>
-                            <th>Headline</th>
-                            <th>Title</th>
-                            <th>Status</th>
+                            <th>Category Name</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
                             <div class="product-wrapper">
-                                @foreach ($job as $key => $job)
+                                @foreach ($jobcategories as $key => $item)
                                     <tr>
                                         <td>{{ ++$key }}</td>
-                                        <td>{{ $job->headline }}</td>
-                                        <td>{{ $job->title }}</td>
-                                        <td>{{ $job->status }}</td>
+                                        <td>{{ $item->category_name }}</td>
                                         <td>
-                                            <a href="{{ route('freelancer.singlejob' ,$job->id) }}"><button class="btn btn-sm btn-primary">View Job</button></a>                                          
+                                            <a href="{{ route('superadmin.deletejobcategory', $item->id)}}"><button
+                                                    class="btn btn-sm btn-warning">Delete</button></a>
+
                                         </td>
                                     </tr>
                                 @endforeach

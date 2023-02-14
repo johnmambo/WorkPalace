@@ -90,7 +90,9 @@ class UserController extends Controller
         $job->status = 'draft';
         $job->save();
         return redirect()->route('user.alljobs')->with('success', 'Job Details updated successfully');
+        
     }
+    ///repeat
     public function DeleteSingleJob($id)
     {
         $job = Job::findOrFail($id);

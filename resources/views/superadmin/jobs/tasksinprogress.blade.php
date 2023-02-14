@@ -1,5 +1,5 @@
 @extends('layouts.main');
-@section('title', 'All-Jobs')
+@section('title', 'Tasks In Progress')
 @section('content')
 
     <div>
@@ -24,14 +24,16 @@
                         </thead>
                         <tbody>
                             <div class="product-wrapper">
-                                @foreach ($job as $key => $job)
+                                @foreach ($jobsinprogress as $key => $job)
                                     <tr>
                                         <td>{{ ++$key }}</td>
                                         <td>{{ $job->headline }}</td>
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->status }}</td>
                                         <td>
-                                            <a href="{{ route('freelancer.singlejob' ,$job->id) }}"><button class="btn btn-sm btn-primary">View Job</button></a>                                          
+                                            <a href="{{ route('superadmin.singlejob' ,$job->id) }}"><button class="btn btn-sm btn-primary">View Job</button></a>
+                                           
+                                            
                                         </td>
                                     </tr>
                                 @endforeach

@@ -72,29 +72,29 @@
                                 <span>Dashboard</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.new-job') }}" class="nav-link"><i class="ri-mail-send-line"></i>
+                            <a href="{{ route('superadmin.create.category')}}" class="nav-link"><i class="ri-mail-send-line"></i>
                                 <span>Add Job category</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.alljobs') }}" class="nav-link"><i class="ri-calendar-line"></i>
+                            <a href="{{ route('superadmin.alljobcategories')}}" class="nav-link"><i class="ri-calendar-line"></i>
                                 <span>All Job Categories
                                 </span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.draftjobs') }}" class="nav-link"><i class="ri-question-answer-line"></i>
+                            <a href="{{ route('superadmin.alljobs')}}" class="nav-link"><i class="ri-question-answer-line"></i>
                                 <span>All Jobs</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-contacts-book-line"></i>
+                            <a href="{{ route('superadmin.allcompletejobs')}}" class="nav-link"><i class="ri-contacts-book-line"></i>
                                 <span>Completed Jobs</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>In Progress
+                            <a href="{{ route('superadmin.jobsinprogress')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>In Progress
                                     Tasks
                                 </span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Draft Tasks
+                            <a href="{{ route('superadmin.jobsasdrafts')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Draft Tasks
                                 </span></a>
                         </li>
                         <li class="nav-item">
@@ -140,7 +140,7 @@
                                     Payments</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Disputed
+                            <a href="{{ route('freelancer.disputedpayments')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Disputed
                                     Payments</span></a>
                         </li>
                     @endrole
