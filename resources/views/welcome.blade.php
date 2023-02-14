@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-xl">
         <div class="container-xxl justify-content-md-start">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('assets/logo.png') }}" alt="" />
+                <img src="{{ asset('assets/prof.png') }}" style="height: 120px; width: 200px;" alt="" />
             </a>
             <!-- /.navbar-brand -->
 

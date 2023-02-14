@@ -51,6 +51,12 @@ Route::middleware(['auth', 'role:superadmin'])->name('superadmin.')->prefix('sup
     Route::get('/allcompletejobs', [AdminController::class, 'allcompletejobs'])->name('allcompletejobs');
     Route::get('/jobsinprogress', [AdminController::class, 'jobsinprogress'])->name('jobsinprogress');
     Route::get('/jobsasdrafts', [AdminController::class, 'jobsasdrafts'])->name('jobsasdrafts');
+
+    Route::get('/allpayments', [AdminController::class, 'allpayments'])->name('allpayments');
+    
+    Route::get('/all-employers', [AdminController::class, 'allemployers'])->name('all-employers');
+    Route::get('/all-freelancers', [AdminController::class, 'allfreelancers'])->name('all-freelancers');
+
 });
 
 

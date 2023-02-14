@@ -22,7 +22,7 @@
 
     <div class="card card-sign ">
         <div class="card-header text-center">
-            <a href="{{ url('/') }}" class="header-logo mb-2 ">Work Palace</a>
+            <a href="{{ url('/') }}" class="header-logo mb-2 ">StudyProfessors</a>
             <h3 class="card-title">Sign Up</h3>
         </div><!-- card-header -->
         <div class="card-body">

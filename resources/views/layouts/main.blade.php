@@ -19,8 +19,11 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/style.min.css') }}">
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.4/css/buttons.dataTables.min.css">
 
     @livewireStyles
+
 </head>
 
 <body>
@@ -72,41 +75,49 @@
                                 <span>Dashboard</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('superadmin.create.category')}}" class="nav-link"><i class="ri-mail-send-line"></i>
+                            <a href="{{ route('superadmin.create.category') }}" class="nav-link"><i
+                                    class="ri-mail-send-line"></i>
                                 <span>Add Job category</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('superadmin.alljobcategories')}}" class="nav-link"><i class="ri-calendar-line"></i>
+                            <a href="{{ route('superadmin.alljobcategories') }}" class="nav-link"><i
+                                    class="ri-calendar-line"></i>
                                 <span>All Job Categories
                                 </span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('superadmin.alljobs')}}" class="nav-link"><i class="ri-question-answer-line"></i>
+                            <a href="{{ route('superadmin.alljobs') }}" class="nav-link"><i
+                                    class="ri-question-answer-line"></i>
                                 <span>All Jobs</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('superadmin.allcompletejobs')}}" class="nav-link"><i class="ri-contacts-book-line"></i>
+                            <a href="{{ route('superadmin.allcompletejobs') }}" class="nav-link"><i
+                                    class="ri-contacts-book-line"></i>
                                 <span>Completed Jobs</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('superadmin.jobsinprogress')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>In Progress
+                            <a href="{{ route('superadmin.jobsinprogress') }}" class="nav-link"><i
+                                    class="ri-checkbox-multiple-line"></i> <span>In Progress
                                     Tasks
                                 </span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('superadmin.jobsasdrafts')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Draft Tasks
+                            <a href="{{ route('superadmin.jobsasdrafts') }}" class="nav-link"><i
+                                    class="ri-checkbox-multiple-line"></i> <span>Draft Tasks
                                 </span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                            <a href="{{ route('superadmin.allpayments') }}" class="nav-link"><i
+                                    class="ri-checkbox-multiple-line"></i> <span>All
                                     Payments</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                            <a href="{{ route('superadmin.all-employers') }}" class="nav-link"><i
+                                    class="ri-checkbox-multiple-line"></i> <span>All
                                     Employers</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                            <a href="{{ route('superadmin.all-freelancers')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
                                     Freelancers</span></a>
                         </li>
                     @endrole
@@ -120,27 +131,33 @@
                                     Jobs</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('freelancer.completejobs')}}" class="nav-link"><i class="ri-calendar-line"></i> <span>Completed
+                            <a href="{{ route('freelancer.completejobs') }}" class="nav-link"><i
+                                    class="ri-calendar-line"></i> <span>Completed
                                     Tasks</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('freelancer.pendingjobs')}}" class="nav-link"><i class="ri-question-answer-line"></i>
+                            <a href="{{ route('freelancer.pendingjobs') }}" class="nav-link"><i
+                                    class="ri-question-answer-line"></i>
                                 <span>Pending Tasks</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('freelancer.allpayments')}}" class="nav-link"><i class="ri-contacts-book-line"></i>
+                            <a href="{{ route('freelancer.allpayments') }}" class="nav-link"><i
+                                    class="ri-contacts-book-line"></i>
                                 <span>All Payments</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('freelancer.completepayments')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Completed
+                            <a href="{{ route('freelancer.completepayments') }}" class="nav-link"><i
+                                    class="ri-checkbox-multiple-line"></i> <span>Completed
                                     Payments</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('freelancer.pendingpayments')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Pending
+                            <a href="{{ route('freelancer.pendingpayments') }}" class="nav-link"><i
+                                    class="ri-checkbox-multiple-line"></i> <span>Pending
                                     Payments</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('freelancer.disputedpayments')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Disputed
+                            <a href="{{ route('freelancer.disputedpayments') }}" class="nav-link"><i
+                                    class="ri-checkbox-multiple-line"></i> <span>Disputed
                                     Payments</span></a>
                         </li>
                     @endrole
@@ -257,6 +274,24 @@
     <script src="{{ asset('assets/admin/assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/admin/assets/js/db.product.js') }}"></script>
     @livewireScripts
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js
+                                "></script>
+    <script src=" https://cdn.datatables.net/buttons/2.3.4/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.4/js/buttons.print.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'print'
+                ]
+            });
+        });
+    </script>
+
 
 </body>
 

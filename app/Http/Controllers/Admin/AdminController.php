@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 
 class AdminController extends Controller
@@ -98,5 +99,23 @@ class AdminController extends Controller
         ->get();
         return view('superadmin.jobs.drafts', compact('drafts'));
 
+    }
+    public function allpayments()
+    {    
+
+        $allpayments = Job::where('status', 'draft')
+        ->get();
+        return view('superadmin.payments.allpayments', compact('allpayments'));
+
+    }
+    public function allemployers()
+    {
+        $users = User::whereRoleIs('user')->get();
+        return view('superadmin.users.allemployers', compact('users'));
+    }
+    public function allfreelancers()
+    {
+        $users = User::whereRoleIs('freelancer')->get();
+        return view('superadmin.users.all-freelancers', compact('users'));
     }
 }
