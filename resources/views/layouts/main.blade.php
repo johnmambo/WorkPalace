@@ -124,19 +124,19 @@
                                     Tasks</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="../apps/chat.html" class="nav-link"><i class="ri-question-answer-line"></i>
+                            <a href="{{ route('freelancer.pendingjobs')}}" class="nav-link"><i class="ri-question-answer-line"></i>
                                 <span>Pending Tasks</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-contacts-book-line"></i>
+                            <a href="{{ route('freelancer.allpayments')}}" class="nav-link"><i class="ri-contacts-book-line"></i>
                                 <span>All Payments</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Completed
+                            <a href="{{ route('freelancer.completepayments')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Completed
                                     Payments</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Pending
+                            <a href="{{ route('freelancer.pendingpayments')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Pending
                                     Payments</span></a>
                         </li>
                         <li class="nav-item">

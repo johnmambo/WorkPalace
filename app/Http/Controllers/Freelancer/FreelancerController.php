@@ -45,15 +45,48 @@ class FreelancerController extends Controller
 
         return view('freelancer.jobs.singlejob', compact('job'));
     }
+
+
     public function completejobs(){
         
         $user = Auth::user();
 
-        $jobs = Job::where([
+        
+            $job = Job::where('status', 'complete')
+             ->where('user_id', Auth::id())
+             ->get();
+
+        return view('freelancer.jobs.compeletejobs', compact('job'));
+    }
+
+
+    public function pendingjobs(){
+        
+        $user = Auth::user();
+
+        $job= Job::where([
                             ['id', $user->id],
-                            ['status', 'complete']
+                            ['status', 'pending']
                             ])->get();
 
-        return view('freelance.jobs.compeletejobs', compact('jobs'));
+        return view('freelancer.jobs.pendingjobs', compact('job'));
+    }
+
+    public function allpayments(){
+        
+
+        return view('freelancer.payments.allpayments');
+    }
+    public function completepayments(){
+        
+
+        return view('freelancer.payments.completepayments');
+
+    }
+    public function pendingpayments(){
+        
+
+        return view('freelancer.payments.pendingpayments');
+        
     }
 }

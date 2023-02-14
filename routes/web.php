@@ -48,6 +48,10 @@ Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('fre
     Route::get('/all-jobs', [FreelancerController::class, 'alljobs'])->name('postedjobs');
     Route::get('/single-job/{id}', [FreelancerController::class, 'singlejob'])->name('singlejob');
     Route::get('/completejobs', [FreelancerController::class, 'completejobs'])->name('completejobs');
+    Route::get('/pendingjobs', [FreelancerController::class, 'pendingjobs'])->name('pendingjobs');
+    Route::get('/allpayments', [FreelancerController::class, 'allpayments'])->name('allpayments');
+    Route::get('/completepayments', [FreelancerController::class, 'completepayments'])->name('completepayments');
+    Route::get('/pendingpayments', [FreelancerController::class, 'pendingpayments'])->name('pendingpayments');
 });
 
 Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(function () {
