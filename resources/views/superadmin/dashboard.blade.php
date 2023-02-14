@@ -5,7 +5,7 @@
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">All Freelancers</label>
-                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i> 8,327</h3>
+                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i>{{ $freelancers->count()}}</h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
@@ -14,7 +14,7 @@
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">All Employers</label>
-                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i> <span>$</span>12,105</h3>
+                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i> {{ $employers}}</h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
@@ -23,7 +23,7 @@
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">Completed Tasks</label>
-                <h3 class="card-value mb-1"><i class="ri-inbox-line"></i> 4,598</h3>
+                <h3 class="card-value mb-1"><i class="ri-inbox-line"></i> {{ $completeTasks->count()}}</h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
@@ -41,7 +41,7 @@
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">Tasks In Progress</label>
-                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i> 8,327</h3>
+                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i> {{ $tasksInProgress->count()}}</h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
@@ -50,7 +50,7 @@
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">Tasks This Week</label>
-                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i> <span>$</span>12,105</h3>
+                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i> {{ $jobsThisWeek->count()}}</h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->

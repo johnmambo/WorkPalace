@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use App\Models\JobCategory;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class FreelancerController extends Controller
@@ -14,21 +15,27 @@ class FreelancerController extends Controller
     public function freelancerdash()
     {
        
-        $user = Auth::user();
+        $alljobs  = Job::where('status', 'active')->get();
 
-        $activejobs = Job::all();
+        $activejobs  = Job::where(['freelancer_assigned_id'=>auth()->user()->id,'status'=>'assigned'])->get();
+
+        $completetasks  = Job::where('status', 'complete')->get();
+
+        $recentTasks = Job::orderBy('created_at', 'desc')->take(5)->get();
+        $completedfivetasks = Job::query()->where(['freelancer_assigned_id'=>auth()->user()->id,'status'=>'complete'])->orderBy('created_at', 'desc')->take(5)->get();
+
+        $jobsThisWeek = Job::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+
+        $jobsThisMonth = Job::select('*')
+            ->whereMonth('created_at', Carbon::now()->month)
+            ->get();
+        $graphJobs = Job::all();
+            // ->select(DB::raw('DATE(created_at) as day'), DB::raw('COUNT(*) as total'))
+            // ->groupBy('day')
+            // ->get();    
 
 
-
-        $completejobs = Job::where([
-                            ['id', $user->id],
-                            ['status', 'complete']
-                            ])->get();        
-        
-        $alljobs = Job::all();
-        
-
-        return view('freelancer.dashboard', compact('activejobs', 'completejobs', 'alljobs'));
+        return view('freelancer.dashboard', compact('alljobs', 'activejobs', 'completetasks','recentTasks', 'completedfivetasks', 'jobsThisWeek', 'jobsThisMonth', 'graphJobs'));
     }
    
     public function allJobs(){
@@ -53,7 +60,8 @@ class FreelancerController extends Controller
 
         
             $job = Job::where('status', 'complete')
-             ->where('user_id', Auth::id())
+             ->where('user_id', auth()->user()->id)
+            //  ->where('user_id', Auth::id())
              ->get();
 
         return view('freelancer.jobs.compeletejobs', compact('job'));

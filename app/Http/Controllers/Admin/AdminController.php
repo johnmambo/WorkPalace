@@ -7,6 +7,7 @@ use App\Models\JobCategory;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\User;
+use Carbon\Carbon;
 use Brian2694\Toastr\Facades\Toastr;
 
 class AdminController extends Controller
@@ -21,7 +22,14 @@ class AdminController extends Controller
         return $user;
     }
     public function superadmindash(){
-        return view('superadmin.dashboard');
+
+        $freelancers = User::whereRoleIs('freelancer')->get();
+        $employers = User::whereRoleIs('user')->count();
+        $completeTasks = Job::where('status', 'complete')->get();
+        $tasksInProgress = Job::where('status', 'inprogress')->get();
+        $jobsThisWeek = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+
+        return view('superadmin.dashboard', compact('freelancers', 'employers', 'completeTasks', 'tasksInProgress', 'jobsThisWeek'));
     }
     public function createcategory(){
         return view('superadmin.jobs.createcategory');

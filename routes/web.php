@@ -69,7 +69,7 @@ Route::middleware(['auth', 'role:freelancer'])->name('freelancer.')->prefix('fre
     Route::get('/allpayments', [FreelancerController::class, 'allpayments'])->name('allpayments');
     Route::get('/completepayments', [FreelancerController::class, 'completepayments'])->name('completepayments');
     Route::get('/pendingpayments', [FreelancerController::class, 'pendingpayments'])->name('pendingpayments');
-    Route::get('/disputedpayments', [FreelancerController::class, 'disputedpayments'])->name('dispayments');
+    Route::get('/disputedpayments', [FreelancerController::class, 'disputedpayments'])->name('disputedpayments');
 });
 
 Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(function () {
