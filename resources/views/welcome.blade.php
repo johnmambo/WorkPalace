@@ -25,33 +25,13 @@
     <link rel="stylesheet" href="{{ asset('assets/welcome/dist/css/main.css') }}">
 </head>
 
-{{-- <body class="antialiased">
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                    <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-
-
-    </div>
-</body> --}}
 
 <body class="page__joblist">
     <nav class="navbar navbar-expand-xl">
         <div class="container-xxl justify-content-md-start">
-            <a class="navbar-brand" href="index.html">
-                <img src="{{ asset('assets/logo.svg') }}" alt="" />
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ asset('assets/logo.png') }}" alt="" />
             </a>
             <!-- /.navbar-brand -->
 
@@ -63,9 +43,9 @@
 
             <div class="d-none d-md-flex d-xl-none ms-auto">
                 <a class="btn btn-alice-blue text-dark fw-semiBold py-12 px-34 me-12 rounded-pill"
-                    href="applicationform.html" role="button">Log In</a>
-                <a class="btn btn-primary fw-semiBold py-12 px-43 rounded-pill" href="applicationform.html"
-                    role="button">Sign Up</a>
+                    href="{{ route('login') }}" role="button">Log In</a>
+                <a class="btn btn-primary fw-semiBold py-12 px-43 rounded-pill" href="{{ route('register') }}" role="button">Register</a>
+
             </div>
             <!-- /.btn-login and btn-signup mobile -->
 
@@ -73,16 +53,16 @@
                 <div class="d-grid d-xl-flex align-items-xl-center pb-15 pb-xl-0 w-100 gap-20 gap-xl-0">
                     <ul class="navbar-nav mx-xl-auto order-2 order-xl-1">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link active" href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#pricing-section">Pricing</a>
+                            <a class="nav-link" href="">All Jobs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="eventlist.html">Blog</a>
+                            <a class="nav-link" href="">Job Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="joblist.html">Become a member</a>
+                            <a class="nav-link" aria-current="page" href="{{ route('login') }}">Post New Job</a>
                         </li>
                     </ul>
                     <!-- /.navbar-nav -->
@@ -113,7 +93,7 @@
             <div class="row">
                 <div class="col-12 col-lg-6 my-34 my-lg-80 my-xl-120 my-xxl-180 order-2 order-lg-1">
                     <h1 class="heading-header-1 mb-0">Find your dream jobs through <span
-                            class="text-primary">Ziro</span> easily</h1>
+                            class="text-primary">Work Palace</span> Easily</h1>
                     <!-- /.heading-header -->
 
                     <form class="ms-auto mt-60" role="search" action="#" method="get">
@@ -126,22 +106,14 @@
                     <!-- /.search-job-form -->
 
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start mt-34 gap-12">
-                        <a href="#" class="btn btn-suggestion fw-medium rounded-pill shadow-none">Web Dev</a>
-                        <a href="#" class="btn btn-suggestion fw-medium rounded-pill shadow-none">Mobile Dev</a>
-                        <a href="#" class="btn btn-suggestion fw-medium rounded-pill shadow-none">Design</a>
-                        <a href="#" class="btn btn-suggestion fw-medium rounded-pill shadow-none">Writing</a>
-                        <a href="#"
-                            class="d-none d-md-inline-block btn btn-suggestion fw-medium rounded-pill shadow-none">Admin
-                            Support</a>
-                        <a href="#"
-                            class="d-none d-md-inline-block btn btn-suggestion fw-medium rounded-pill shadow-none">Customer
-                            Service</a>
-                        <a href="#"
-                            class="d-none d-md-inline-blockbtn btn-suggestion fw-medium rounded-pill shadow-none">Marketing</a>
-                        <a href="#"
-                            class="d-none d-md-inline-block btn btn-suggestion fw-medium rounded-pill shadow-none">Accounting</a>
-                        <a href="#" class="btn btn-suggestion fw-medium rounded-pill shadow-none">View all
-                            categories</a>
+                        @php
+                            $categories = App\Models\JobCategory::all();
+                        @endphp
+                        @foreach ($categories as $item)
+                        <a href="#" class="btn btn-suggestion fw-medium rounded-pill shadow-none">{{ ucwords($item->category_name)}}</a>
+
+                        @endforeach
+
                     </div>
                     <!-- /.search-suggestion -->
                 </div>
@@ -167,76 +139,7 @@
                 <h4 class="heading-section-4 text-dark mb-0">Showing 34 Jobs</h4>
                 <!-- /.heading-section -->
 
-                <div
-                    class="d-flex flex-column flex-md-row align-items-md-center w-100 w-xl-auto ms-auto gap-15 gap-md-34">
-                    <div class="d-flex gap-43 py-15 overflow-auto">
-                        <div class="d-flex gap-25">
-                            <div class="checkbox-type type-1">
-                                <input class="checkbox-type-input" type="checkbox" value=""
-                                    id="checkFulltime" />
-                                <label class="checkbox-type-label" for="checkFulltime">
-                                    <div class="checkbox-type-icon">
-                                        <img src="{{ asset('assets/icons/check-circle-stroke.svg') }}" class="svg-inject"
-                                            alt="" />
-                                    </div>
-                                    <div class="checkbox-type-text fw-semiBold">Fulltime</div>
-                                </label>
-                            </div>
-                            <!-- /.checkbox-filter -->
 
-                            <div class="checkbox-type type-1">
-                                <input class="checkbox-type-input" type="checkbox" value=""
-                                    id="checkFreelance" checked />
-                                <label class="checkbox-type-label" for="checkFreelance">
-                                    <div class="checkbox-type-icon">
-                                        <img src="{{ asset('assets/icons/check-circle-stroke.svg') }}" class="svg-inject"
-                                            alt="" />
-                                    </div>
-                                    <div class="checkbox-type-text fw-semiBold">Freelance</div>
-                                </label>
-                            </div>
-                            <!-- /.checkbox-filter -->
-                        </div>
-
-                        <div class="d-flex gap-25">
-                            <div class="checkbox-switch checkbox-switch-end">
-                                <input class="checkbox-switch-input" type="checkbox" role="switch"
-                                    id="swicthCheckDetails" />
-                                <label class="checkbox-switch-label" for="swicthCheckDetails">
-                                    <div class="checkbox-switch"></div>
-                                    <div class="checkbox-switch-text fw-semiBold">Details</div>
-                                </label>
-                            </div>
-                            <!-- /.checkbox-swicth-fillter -->
-
-                            <div class="checkbox-switch checkbox-switch-end">
-                                <input class="checkbox-switch-input" type="checkbox" role="switch"
-                                    id="switchCheckSalary" checked />
-                                <label class="checkbox-switch-label" for="switchCheckSalary">
-                                    <div class="checkbox-switch"></div>
-                                    <div class="checkbox-switch-text fw-semiBold">Salary</div>
-                                </label>
-                            </div>
-                            <!-- /.checkbox-swicth-fillter -->
-                        </div>
-                    </div>
-
-                    <div class="d-flex gap-15 ms-auto">
-                        <button
-                            class="btn d-flex align-items-center fw-medium text-dark py-12 px-25 border border-1 border-platinum rounded-pill shadow-none">
-                            Newest
-                            <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-20 ms-15"
-                                alt="" />
-                        </button>
-                        <!-- /.btn-newest -->
-
-                        <button class="btn btn-rounded border border-1 border-platinum shadow-none" role="button">
-                            <img src="{{ asset('assets/icons/filter.svg') }}" class="svg-inject svg-icon text-primary"
-                                alt="" />
-                        </button>
-                        <!-- /.btn-filter -->
-                    </div>
-                </div>
             </div>
 
             <div class="d-grid mt-60 gap-34">
@@ -294,655 +197,18 @@
                 </div>
                 <!-- /.job-card-grid-harizontal-component -->
 
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse2"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse2">
-                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-1.png')}}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Intern UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Maximoz Team</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse2">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$500 - $1,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">Manchester, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
-                        </button>
-                    </div>
-                </div>
-                <!-- /.job-card-grid-harizontal-component -->
 
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse3"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse3">
-                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-6.png') }}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Junior UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Vvibu Leu Boz Studios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse3">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$8,000 - $12,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">Oxford, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
-                        </button>
-                    </div>
-                </div>
-                <!-- /.job-card-grid-harizontal-component -->
-
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse4"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse4">
-                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-7.png')}}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Principal UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Lowvoltages Team</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse4">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg')}}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$11,000 - $60,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg')}}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">London, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
-                        </button>
-                    </div>
-                </div>
-                <!-- /.job-card-grid-harizontal-component -->
-
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse5"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse5">
-                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" 
-                        class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-8.png') }}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Senior UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Highspeed Studios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse5">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$500 - $1,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg')}}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">London, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
-                        </button>
-                    </div>
-                </div>
-                <!-- /.job-card-grid-harizontal-component -->
-
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse6"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse6">
-                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-9.png') }}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Principal UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Lowvoltages Team</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse6">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$11,000 - $60,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">London, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
-                        </button>
-                    </div>
-                </div>
-                <!-- /.job-card-grid-harizontal-component -->
-
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse7"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse7">
-                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-10.png')}}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Senior UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Highspeed Studios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse7">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$500 - $1,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">London, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject svg-icon is-20" alt="" />
-                        </button>
-                    </div>
-                </div>
-                <!-- /.job-card-grid-harizontal-component -->
-
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse8"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse8">
-                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-11.png')}}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Principal UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Lowvoltages Team</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse8">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg')}}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$11,000 - $60,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg')}}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">London, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject svg-icon is-20" alt="" />
-                        </button>
-                    </div>
-                </div>
-                <!-- /.job-card-grid-harizontal-component -->
-
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse9"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse9">
-                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-12.png')}}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Senior UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Highspeed Studios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse9">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg')}}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$500 - $1,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg')}}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">London, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject svg-icon is-20" alt="" />
-                        </button>
-                    </div>
-                </div>
-                <!-- /.job-card-grid-harizontal-component -->
             </div>
             <!-- /.job-list -->
 
-            <div class="d-flex justify-content-center mt-60">
-                <nav class="pagination-container" aria-label="Page navigation example">
-                    <a href="#" class="page-link previous">
-                        <img src="{{ asset('assets/icons/angles-left.svg')}}" class="svg-inject" alt="" />
-                        Previous
-                    </a>
-                    <ul class="pagination bg-lavender-web-100">
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    </ul>
-                    <a href="#" class="page-link next">
-                        Next
-                        <img src="{{ asset('assets/icons/angles-right.svg')}}" class="svg-inject" alt="" />
-                    </a>
-                </nav>
-            </div>
-            <!-- /.job-list-pagination -->
+
         </div>
         <!-- /.container -->
         <!-- = /. Job List Section = -->
 
-        <div class="mt-80"></div>
-        <!-- = /. Gap Section = -->
-
-        <div class="border-top border-alice-blue"></div>
-        <!-- = /. Gap Border Section = -->
-
-        <div class="mt-80"></div>
-        <!-- = /. Gap Section = -->
-
-        <div class="container-xxl py-60">
-            <div class="d-flex flex-column flex-md-row align-items-md-center gap-20">
-                <h4 class="heading-section-4 text-dark mb-0">Upcoming Events</h4>
-                <!-- /.heading-section -->
-
-                <div
-                    class="d-flex align-items-center justify-content-between justify-content-md-start ms-md-auto gap-15">
-                    <button
-                        class="btn d-flex align-items-center fw-medium text-dark py-12 px-25 border border-1 border-platinum rounded-pill shadow-none">
-                        <img src="{{ asset('assets/icons/calendar.svg')}}" class="svg-inject text-primary is-20 me-15"
-                            alt="" />
-                        Filter Date
-                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-20 ms-15"
-                            alt="" />
-                    </button>
-                    <!-- /.btn-filter-date -->
-
-                    <button
-                        class="btn d-flex align-items-center fw-medium text-dark py-12 px-25 border border-1 border-platinum rounded-pill shadow-none">
-                        Newest
-                        <img src="{{ asset('assets/icons/chevron-down.svg')}}" class="svg-inject text-primary is-20 ms-15"
-                            alt="" />
-                    </button>
-                    <!-- /.btn-newest -->
-                </div>
-            </div>
-
-            <div class="row mt-60">
-                <div class="col-12 col-md-6 col-xl-4 my-15">
-                    <div class="event-card complete">
-                        <div class="event-thumb">
-                            <img src="{{ asset('assets/event-thumb/event-thumb-1.png')}}" alt="event-1" />
-                        </div>
-                        <div class="event-content">
-                            <div class="event-content-header">
-                                <div class="event-content-date-book">
-                                    <div class="event-date">
-                                        20
-                                        <span>NOV</span>
-                                    </div>
-                                    <button class="btn btn-event-book" type="button">
-                                        <img src="{{ asset('assets/icons/check-circle-stroke-full.svg')}}" class="svg-inject"
-                                            alt="" />
-                                    </button>
-                                </div>
-                                <div class="event-content-info">
-                                    <div class="event-categories">
-                                        <a class="event-categories-link" href="#">Mobile App</a>
-                                    </div>
-                                    <h2 class="event-title">
-                                        <a class="event-title-link" href="#">Global Android Programmer Meetup
-                                            2020</a>
-                                    </h2>
-                                </div>
-                            </div>
-                            <div class="event-content-footer">
-                                <div class="event-summary">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.event-card-grid-component -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-12 col-md-6 col-xl-4 my-15">
-                    <div class="event-card">
-                        <div class="event-thumb">
-                            <img src="{{asset('assets/event-thumb/event-thumb-2.png')}}" alt="event-2" />
-                        </div>
-                        <div class="event-content">
-                            <div class="event-content-header">
-                                <div class="event-content-date-book">
-                                    <div class="event-date">
-                                        15
-                                        <span>NOV</span>
-                                    </div>
-                                    <button class="btn btn-event-book" type="button">
-                                        <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject" alt="" />
-                                    </button>
-                                </div>
-                                <div class="event-content-info">
-                                    <div class="event-categories">
-                                        <a class="event-categories-link" href="#">ART EXIBITHION</a>
-                                    </div>
-                                    <h2 class="event-title">
-                                        <a class="event-title-link" href="#">Paris Designer Meetup with Ziro
-                                            Partner</a>
-                                    </h2>
-                                </div>
-                            </div>
-                            <div class="event-content-footer">
-                                <div class="event-summary">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.event-card-grid-component -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-12 col-md-6 col-xl-4 my-15">
-                    <div class="event-card">
-                        <div class="event-thumb">
-                            <img src="{{ asset('assets/event-thumb/event-thumb-3.png')}}" alt="event-3" />
-                        </div>
-                        <div class="event-content">
-                            <div class="event-content-header">
-                                <div class="event-content-date-book">
-                                    <div class="event-date">
-                                        07
-                                        <span>NOV</span>
-                                    </div>
-                                    <button class="btn btn-event-book" type="button">
-                                        <img src="{{ asset('assets/icons/heart.svg')}}" class="svg-inject" alt="" />
-                                    </button>
-                                </div>
-                                <div class="event-content-info">
-                                    <div class="event-categories">
-                                        <a class="event-categories-link" href="#">Accounting</a>
-                                    </div>
-                                    <h2 class="event-title">
-                                        <a class="event-title-link" href="#">Bussiness Plan in Pandemic with
-                                            Famous Native Speaker</a>
-                                    </h2>
-                                </div>
-                            </div>
-                            <div class="event-content-footer">
-                                <div class="event-summary">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.event-card-grid-component -->
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row
-                 -->
-            <div class="d-flex">
-                <a class="btn btn-primary fw-semiBold py-12 px-43 mt-60 mx-auto rounded-pill" href="eventlist.html"
-                    role="button">View more</a>\
-                <!-- /.btn-view-more -->
-            </div>
-        </div>
-        <!-- = /. Upcoming Events Section = -->
 
         <div class="mt-43"></div>
-        <!-- = /. Gap Section = -->
 
-        <div class="container py-60 py-lg-100">
-            <div class="swiper image-slider client-logo-slider mx-xl-34 mx-xxl-80">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="{{ asset('assets/client-logo/client-logo-1.png')}}" alt="" />
-                    </div>
-
-                    <div class="swiper-slide">
-                        <img src="{{ asset('assets/client-logo/client-logo-2.png')}}" alt="" />
-                    </div>
-
-                    <div class="swiper-slide">
-                        <img src="{{ asset('assets/client-logo/client-logo-3.png')}}" alt="" />
-                    </div>
-
-                    <div class="swiper-slide">
-                        <img src="{{ asset('assets/client-logo/client-logo-4.png')}}" alt="" />
-                    </div>
-
-                    <div class="swiper-slide">
-                        <img src="{{ asset('assets/client-logo/client-logo-5.png')}}" alt="" />
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- = /. Logo Client Section = -->
     </main>
     <!-- = /. Main Section = -->
 
@@ -974,11 +240,9 @@
             <div class="row py-20 py-xl-80">
                 <div class="col-12 col-xl-4 footer-widget about">
                     <div class="footer-brand">
-                        <img src="{{ asset('assets/logo-footer.svg')}}" alt="logo" />
+                        <img src="{{ asset('assets/logo.png')}}" alt="logo" />
                     </div>
-                    <p class="footer-description mt-34">Ziro is a Freelance Landing Website lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud</p>
+                    <p class="footer-description mt-34">WorkPalace is an  freelancing platform headquartered in Nairobi, Kenya. The company was formed in 2023 after the merger of Company A. and Company B.</p>
                     <ul class="social-btn-group mt-34">
                         <li class="social-item">
                             <a class="social-link" href="#">
@@ -1011,23 +275,18 @@
                 <!-- /.col -->
 
                 <div class="col-12 col-lg-4 col-xl footer-widget link-list mt-34 mt-xl-0">
-                    <h6 class="footer-title">Ziro</h6>
+                    <h6 class="footer-title">WorkPalace</h6>
                     <ul class="footer-link-list">
                         <li class="link-item">
-                            <a class="link" href="#">Why Ziro</a>
+                            <a class="link" href="#">Why Us</a>
                         </li>
                         <li class="link-item">
-                            <a class="link" href="#">Enterprise</a>
+                            <a class="link" href="#">Freelancer Account</a>
                         </li>
                         <li class="link-item">
-                            <a class="link" href="#">Customer Story</a>
+                            <a class="link" href="#">Employer Account</a>
                         </li>
-                        <li class="link-item">
-                            <a class="link" href="#">Security</a>
-                        </li>
-                        <li class="link-item">
-                            <a class="link" href="#">Pricing</a>
-                        </li>
+
                     </ul>
                 </div>
                 <!-- /.col -->
@@ -1036,23 +295,15 @@
                     <h6 class="footer-title">Resources</h6>
                     <ul class="footer-link-list">
                         <li class="link-item">
-                            <a class="link" href="#">Download</a>
+                            <a class="link" href="#">All Categories</a>
                         </li>
                         <li class="link-item">
-                            <a class="link" href="#">Help Center</a>
+                            <a class="link" href="#">All Jobs</a>
                         </li>
                         <li class="link-item">
-                            <a class="link" href="#">Events</a>
+                            <a class="link" href="#">My Account</a>
                         </li>
-                        <li class="link-item">
-                            <a class="link" href="#">Guides</a>
-                        </li>
-                        <li class="link-item">
-                            <a class="link" href="#">Partner</a>
-                        </li>
-                        <li class="link-item">
-                            <a class="link" href="#">Directories</a>
-                        </li>
+
                     </ul>
                 </div>
                 <!-- /.col -->
@@ -1067,17 +318,9 @@
                             <a class="link" href="#">Contact us</a>
                         </li>
                         <li class="link-item">
-                            <a class="link" href="#">Products</a>
+                            <a class="link" href="#">Jobs</a>
                         </li>
-                        <li class="link-item">
-                            <a class="link" href="#">Login</a>
-                        </li>
-                        <li class="link-item">
-                            <a class="link" href="#">Sign Up</a>
-                        </li>
-                        <li class="link-item">
-                            <a class="link" href="#">FAQ</a>
-                        </li>
+
                     </ul>
                 </div>
                 <!-- /.col -->
@@ -1088,19 +331,19 @@
                         <li class="link-item">
                             <img src="{{ asset('assets/icons/mark-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
                             <a class="link" href="#">
-                                <span>832 Thompson Drive, San Fransisco CA 94107, United States</span>
+                                <span>832 Lumumba Drive, San Road  94107, Nairobi</span>
                             </a>
                         </li>
                         <li class="link-item">
                             <img src="{{ asset('assets/icons/phone-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
                             <a class="link" href="#">
-                                <span>+123 345123 556</span>
+                                <span>+254718052608</span>
                             </a>
                         </li>
                         <li class="link-item">
                             <img src="{{ asset('assets/icons/envelope-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
                             <a class="link" href="#">
-                                <span>support@ziro.id</span>
+                                <span>johnmambo794@gmail.com</span>
                             </a>
                         </li>
                     </ul>
@@ -1113,10 +356,10 @@
 
         <div class="border border-arsenic border-end-0 border-bottom-0 border-start-0">
             <div class="container-xxl d-grid d-lg-flex gap-12 gap-xl-0 justify-content-lg-between py-25">
-                <div class="fs-14 text-white text-center">Ziro Freelancer Landing Website - © 2020 All Rights Reserved
+                <div class="fs-14 text-white text-center">WorkPalace - © 2023 All Rights Reserved
                 </div>
 
-                <div class="fs-14 text-white text-center">Made with ♥ by Peterdraw</div>
+                <div class="fs-14 text-white text-center">Made with ♥ by John Mambo</div>
             </div>
         </div>
     </footer>
