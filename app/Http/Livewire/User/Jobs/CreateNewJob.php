@@ -6,6 +6,7 @@ use App\Models\JobCategory;
 use App\Models\Job;
 use Carbon\Carbon;
 use Livewire\Component;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CreateNewJob extends Component
 {
@@ -88,14 +89,14 @@ class CreateNewJob extends Component
             $this->validate([
                 'payment_category' => 'required',
                 'pay_rate' => 'required|numeric|min:5',
-                'task_deadline' => 'required|after_or_equal:'. Carbon::now()->addHours(6),
+                'task_deadline' => 'required|after_or_equal:' . Carbon::now()->addHours(6),
 
             ]);
         }
 
         $time = time();
-        $subtime = substr($time,5);
-        $taskid = auth()->user()->id.''.$subtime;
+        $subtime = substr($time, 5);
+        $taskid = auth()->user()->id . '' . $subtime;
 
         $new = new Job;
         $new->headline = $this->headline;
@@ -111,7 +112,7 @@ class CreateNewJob extends Component
         $new->task_deadline = $this->task_deadline;
         $new->save();
 
-
-        return redirect()->route('user.alljobs')->with('success', 'Job Details added successfully');
+        Toastr::success('New task created successfully', 'Success', ["positionClass" => "toast-bottom-right"]);
+        return redirect()->route('user.new-job-attachments', $new->job_id);
     }
 }

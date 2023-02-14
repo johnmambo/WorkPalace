@@ -18,6 +18,8 @@
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/style.min.css') }}">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
     @livewireStyles
 </head>
 
@@ -102,7 +104,7 @@
                                 Freelancers</span></a>
                     </li>
 
-                      
+
                     @endrole
                     @role('freelancer')
                         <li class="nav-item">
@@ -249,10 +251,11 @@
 
         <script src="{{ asset('assets/admin/assets/js/script.js') }}"></script>
         <script src="{{ asset('assets/admin/assets/js/db.product.js') }}"></script>
+        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
         @livewireScripts
 
 </body>
 
-<!-- Mirrored from themepixels.me/demo/dashbyte/dashboard/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Feb 2023 14:56:57 GMT -->
 
 </html>
