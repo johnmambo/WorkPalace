@@ -53,6 +53,7 @@ Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(f
     Route::get('/dashboard', [UserController::class, 'userdash'])->name('dashboard');
     Route::get('/new-job', [UserController::class, 'newJob'])->name('new-job');
     Route::get('/alljobs', [UserController::class, 'allJobs'])->name('alljobs');
+    Route::get('/draft-jobs', [UserController::class, 'draftjobs'])->name('draftjobs');
     Route::get('jobs/single-job/{id}', [UserController::class, 'singleJob'])->name('single-job');
     Route::post('jobs/update-single-job/{id}', [UserController::class, 'UpdateSingleJob'])->name('update-single-job');
     Route::get('jobs/delete-single-job/{id}', [UserController::class, 'DeleteSingleJob'])->name('delete-single-job');

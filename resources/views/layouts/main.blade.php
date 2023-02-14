@@ -32,67 +32,77 @@
                 {{-- <a href="#" class="nav-label">Dashboard</a> --}}
                 <ul class="nav nav-sidebar">
                     @role('user')
+
                         <li class="nav-item">
-                            <a href="{{ route('user.new-job') }}" class="nav-link"><i class="ri-pie-chart-2-line"></i>
-                                <span>Add Job</span></a>
+                            <a href="{{ route('user.dashboard') }}" class="nav-link"><i class="ri-folder-2-line"></i> <span>Dashboard</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.alljobs') }}" class="nav-link"><i class="ri-shopping-bag-3-line"></i>
-                                <span>All Jobs</span></a>
+                            <a href="{{ route('user.new-job') }}" class="nav-link"><i class="ri-mail-send-line"></i> <span>Post
+                                    Job</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="ri-coin-line"></i>
-                                <span>Payments </span></a>
-                            <nav class="nav nav-sub2">
-                                <a href="#" class="nav-sub-link"> All Paymets</a>
-                                <a href="#" class="nav-sub-link">Completed Payments</a>
-                                <a href="#"class="nav-sub-link">Pending Payments</a>
-                            </nav>
+                            <a href="{{ route('user.alljobs') }}" class="nav-link"><i class="ri-calendar-line"></i> <span>All Jobs
+                                    </span></a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user.draftjobs') }}" class="nav-link"><i class="ri-question-answer-line"></i>
+                                <span>Draft Jobs</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-contacts-book-line"></i>
+                                <span>Completed Jobs</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>In Progress Tasks
+                                    </span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                    Payments</span></a>
+                        </li>
+
                     @endrole
                     @role('superadmin')
-                        <li class="nav-item">
-                            <a href="{{ route('superadmin.dashboard') }}" class="nav-link"><i
-                                    class="ri-calendar-todo-line"></i>
-                                <span>Dashboard </span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link has-sub"><i class="ri-pencil-ruler-2-line"></i>
-                                <span>Job Categories</span></a>
-                            <nav class="nav nav-subs">
-                                <a href="{{ route('superadmin.create.category') }}" class="nav-sub-link">Create Category</a>
-                                <a href="#" class="nav-sub-link">All Categories</a>
-                            </nav>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="ri-shopping-bag-3-line"></i>
-                                <span>Jobs</span></a>
+                    <li class="nav-item">
+                        <a href="{{ route('superadmin.dashboard') }}" class="nav-link"><i class="ri-folder-2-line"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('user.new-job') }}" class="nav-link"><i class="ri-mail-send-line"></i> <span>Add Job category</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('user.alljobs') }}" class="nav-link"><i class="ri-calendar-line"></i> <span>All Job Categories
+                                </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('user.draftjobs') }}" class="nav-link"><i class="ri-question-answer-line"></i>
+                            <span>All Jobs</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-contacts-book-line"></i>
+                            <span>Completed Jobs</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>In Progress Tasks
+                                </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Draft Tasks
+                                </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                Payments</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                Employers</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                Freelancers</span></a>
+                    </li>
 
-                            <nav class="nav nav-sub1">
-                                <a href="#" class="nav-sub-link">All Jobs</a>
-                                <a href="#" class="nav-sub-link">Completed Jobs</a>
-                                <a href="#"class="nav-sub-link">Pending Jobs</a>
-                            </nav>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="ri-coin-line"></i>
-                                <span>Payments </span></a>
-                            <nav class="nav nav-sub2">
-                                <a href="#" class="nav-sub-link">All Payments</a>
-                                <a href="#" class="nav-sub-link">Completed Payments</a>
-                                <a href="#"class="nav-sub-link">Pending Payments</a>
-                            </nav>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="ri-service-line"></i>
-                                <span>Users</span></a>
-                            <nav class="nav nav-sub3">
-                                <a href="#" class="nav-sub-link">Admins</a>
-                                <a href="#" class="nav-sub-link">Employers</a>
-                                <a href="#" class="nav-sub-link">Freelancers</a>
-                            </nav>
-                        </li>
+                      
                     @endrole
                     @role('freelancer')
                         <li class="nav-item">
