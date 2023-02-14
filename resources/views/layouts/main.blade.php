@@ -18,6 +18,8 @@
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/admin/assets/css/style.min.css') }}">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
     @livewireStyles
 </head>
 
@@ -94,19 +96,21 @@
                         <li class="nav-item">
                             <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Draft Tasks
                                 </span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
-                                    Payments</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
-                                    Employers</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
-                                    Freelancers</span></a>
-                        </li>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                Payments</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                Employers</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                Freelancers</span></a>
+                    </li>
+
+                      
                     @endrole
                     @role('freelancer')
                         <li class="nav-item">
@@ -252,12 +256,11 @@
     <script src="{{ asset('assets/admin/lib/jquery.flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/lib/chart.js/chart.min.js') }}"></script>
 
-    <script src="{{ asset('assets/admin/assets/js/script.js') }}"></script>
-    <script src="{{ asset('assets/admin/assets/js/db.product.js') }}"></script>
-    @livewireScripts
+        <script src="{{ asset('assets/admin/assets/js/script.js') }}"></script>
+        <script src="{{ asset('assets/admin/assets/js/db.product.js') }}"></script>
+        @livewireScripts
 
 </body>
 
-<!-- Mirrored from themepixels.me/demo/dashbyte/dashboard/product.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 12 Feb 2023 14:56:57 GMT -->
 
 </html>

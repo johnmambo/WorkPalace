@@ -44,7 +44,8 @@
             <div class="d-none d-md-flex d-xl-none ms-auto">
                 <a class="btn btn-alice-blue text-dark fw-semiBold py-12 px-34 me-12 rounded-pill"
                     href="{{ route('login') }}" role="button">Log In</a>
-                <a class="btn btn-primary fw-semiBold py-12 px-43 rounded-pill" href="{{ route('register') }}" role="button">Register</a>
+                <a class="btn btn-primary fw-semiBold py-12 px-43 rounded-pill" href="{{ route('register') }}"
+                    role="button">Register</a>
 
             </div>
             <!-- /.btn-login and btn-signup mobile -->
@@ -77,9 +78,9 @@
 
                     <div class="d-grid d-md-none d-xl-flex gap-15 gap-xl-0 order-3">
                         <a class="btn btn-alice-blue text-dark fw-semiBold py-12 px-xl-34 ms-xl-12 rounded-pill"
-                            href="{{ route('login')}}" role="button">Log In</a>
+                            href="{{ route('login') }}" role="button">Log In</a>
                         <a class="btn btn-primary fw-semiBold py-12 px-xl-43 ms-xl-12 rounded-pill"
-                            href="{{ route('register')}}" role="button">Sign Up</a>
+                            href="{{ route('register') }}" role="button">Sign Up</a>
                     </div>
                     <!-- /.btn-login and btn-sign-up desktop -->
                 </div>
@@ -92,8 +93,8 @@
         <div class="container-xxl">
             <div class="row">
                 <div class="col-12 col-lg-6 my-34 my-lg-80 my-xl-120 my-xxl-180 order-2 order-lg-1">
-                    <h1 class="heading-header-1 mb-0">Find your dream jobs through <span
-                            class="text-primary">Work Palace</span> Easily</h1>
+                    <h1 class="heading-header-1 mb-0">Find your dream jobs through <span class="text-primary">Work
+                            Palace</span> Easily</h1>
                     <!-- /.heading-header -->
 
                     <form class="ms-auto mt-60" role="search" action="#" method="get">
@@ -108,10 +109,13 @@
                     <div class="d-flex flex-wrap justify-content-center justify-content-lg-start mt-34 gap-12">
                         @php
                             $categories = App\Models\JobCategory::all();
+                            $jobs = App\Models\Job::where('status', 'active')
+                                ->orderBy('updated_at', 'desc')
+                                ->get();
                         @endphp
                         @foreach ($categories as $item)
-                        <a href="#" class="btn btn-suggestion fw-medium rounded-pill shadow-none">{{ ucwords($item->category_name)}}</a>
-
+                            <a href="#"
+                                class="btn btn-suggestion fw-medium rounded-pill shadow-none">{{ ucwords($item->category_name) }}</a>
                         @endforeach
 
                     </div>
@@ -121,7 +125,8 @@
 
                 <div class="col-12 col-lg-6 order-1 order-lg-2">
                     <div class="position-relative h-lg-100">
-                        <img src="{{ asset('assets/welcome/pages/joblist/header/heroImage.png') }}" class="hero-image-img" alt="" />
+                        <img src="{{ asset('assets/welcome/pages/joblist/header/heroImage.png') }}"
+                            class="hero-image-img" alt="" />
                     </div>
                 </div>
                 <!-- /.col -->
@@ -136,65 +141,80 @@
 
         <div class="container-xxl">
             <div class="d-flex flex-column flex-xl-row align-items-xl-center gap-20">
-                <h4 class="heading-section-4 text-dark mb-0">Showing 34 Jobs</h4>
+                <h4 class="heading-section-4 text-dark mb-0">Showing {{ $jobs->count() }} Jobs</h4>
                 <!-- /.heading-section -->
 
 
             </div>
 
             <div class="d-grid mt-60 gap-34">
-                <div class="job-card-harizontal">
-                    <button
-                        class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
-                        type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse"
-                        aria-expanded="false" aria-controls="jobInfoCardCollapse">
-                        <img src="{{ asset('assets/icons/chevron-down.svg') }}" class="svg-inject text-primary is-16"
-                            alt="" />
-                    </button>
-                    <div class="job-info">
-                        <div class="job-image">
-                            <img src="{{ asset('assets/job-logo/job-logo-5.png') }}" alt="" />
-                        </div>
-                        <div class="job-info-inner">
-                            <h5 class="job-title">
-                                <a href="jobdetail.html">Senior UX Designer</a>
-                            </h5>
-                            <div class="job-author">
-                                <a href="#">Highspeed Studios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse">
-                        <div class="job-info-card">
-                            <div class="info-card">
-                                <div class="info-card-icon bg-ufo-green-100 rounded-pill">
-                                    <img src="{{ asset('assets/icons/sack-dollar.svg') }}" class="svg-inject svg-icon"
-                                        alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">$14,000 - $25,000</h6>
-                                    <div class="info-card-desc">Monthly Salary</div>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-card-icon bg-rajah rounded-pill">
-                                    <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon" alt="" />
-                                </div>
-                                <div class="info-card-content">
-                                    <h6 class="info-card-title">London, England</h6>
-                                    <div class="info-card-desc">Location</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="job-action">
-                        <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
-                            href="jobdetail.html">Apply Now</a>
-                        <button class="btn btn-rounded btn-book">
-                            <img src="{{ asset('assets/icons/heart.svg') }}" class="svg-inject svg-icon is-20" alt="" />
+                @forelse ($jobs as $item)
+                    <div class="job-card-harizontal">
+                        <button
+                            class="btn btn-rounded btn-white position-absolute d-xl-none top-100 start-50 p-10 translate-middle"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#jobInfoCardCollapse"
+                            aria-expanded="false" aria-controls="jobInfoCardCollapse">
+                            <img src="https://ui-avatars.com/api/?name={{ $item->jobemployer->name }}"
+                                class="svg-inject text-primary is-16" alt="" />
                         </button>
+                        <div class="job-info">
+                            <div class="job-image">
+                                <img src="https://ui-avatars.com/api/?name={{ $item->jobemployer->name }}" alt="" />
+                            </div>
+                            <div class="job-info-inner">
+                                <h5 class="job-title">
+                                    <a href="{{ url('view-task/'.$item->job_id) }}">Task ID - {{ $item->job_id }}</a>
+                                </h5>
+                                <div class="job-author">
+                                    <a href="{{ url('view-task/'.$item->job_id) }}"></a>
+                                    {{ str_limit(strip_tags($item->title), 50) }}
+                                    @if (strlen(strip_tags($item->title)) > 50)
+                                        ....
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-info-card-collapse collapse" id="jobInfoCardCollapse">
+                            <div class="job-info-card">
+                                <div class="info-card">
+                                    <div class="info-card-icon bg-ufo-green-100 rounded-pill">
+                                        <img src="{{ asset('assets/icons/sack-dollar.svg') }}"
+                                            class="svg-inject svg-icon" alt="" />
+                                    </div>
+                                    <div class="info-card-content">
+                                        <h6 class="info-card-title">${{ $item->pay_rate }}</h6>
+                                        <div class="info-card-desc">{{ $item->payment_category }}</div>
+                                    </div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-card-icon bg-rajah rounded-pill">
+                                        <img src="{{ asset('assets/icons/mark.svg') }}" class="svg-inject svg-icon"
+                                            alt="" />
+                                    </div>
+                                    @php
+
+                                        $attachments  = App\Models\JobAttachment::where(['category'=>'attachment', 'job_id'=>$item->id])->count();
+                                    @endphp
+                                    <div class="info-card-content">
+                                        <h6 class="info-card-title">{{ $attachments}}</h6>
+                                        <div class="info-card-desc">Files Attached</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-action">
+                            @if (!Auth::user())
+                                <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
+                                    href="{{ route('login') }}">Login To Apply </a>
+                            @else
+                                <a class="btn btn-apply flex-fill flex-md-nofill fw-semiBold py-12 px-43 rounded-pill"
+                                    href="jobdetail.html">Apply Now</a>
+                            @endif
+                        </div>
                     </div>
-                </div>
+                @empty
+                @endforelse
+
                 <!-- /.job-card-grid-harizontal-component -->
 
 
@@ -240,33 +260,39 @@
             <div class="row py-20 py-xl-80">
                 <div class="col-12 col-xl-4 footer-widget about">
                     <div class="footer-brand">
-                        <img src="{{ asset('assets/logo.png')}}" alt="logo" />
+                        <img src="{{ asset('assets/logo.png') }}" alt="logo" />
                     </div>
-                    <p class="footer-description mt-34">WorkPalace is an  freelancing platform headquartered in Nairobi, Kenya. The company was formed in 2023 after the merger of Company A. and Company B.</p>
+                    <p class="footer-description mt-34">WorkPalace is an freelancing platform headquartered in Nairobi,
+                        Kenya. The company was formed in 2023 after the merger of Company A. and Company B.</p>
                     <ul class="social-btn-group mt-34">
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="{{ asset('assets/icons/facebook-f.svg')}}" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/facebook-f.svg') }}" class="svg-inject svg-icon"
+                                    alt="" />
                             </a>
                         </li>
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="{{ asset('assets/icons/twitter.svg')}}" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/twitter.svg') }}" class="svg-inject svg-icon"
+                                    alt="" />
                             </a>
                         </li>
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="{{ asset('assets/icons/youtube.svg')}}" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/youtube.svg') }}" class="svg-inject svg-icon"
+                                    alt="" />
                             </a>
                         </li>
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="{{ asset('assets/icons/linkedin.svg')}}" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/linkedin.svg') }}" class="svg-inject svg-icon"
+                                    alt="" />
                             </a>
                         </li>
                         <li class="social-item">
                             <a class="social-link" href="#">
-                                <img src="{{ asset('assets/icons/instagram.svg')}}" class="svg-inject svg-icon" alt="" />
+                                <img src="{{ asset('assets/icons/instagram.svg') }}" class="svg-inject svg-icon"
+                                    alt="" />
                             </a>
                         </li>
                     </ul>
@@ -329,19 +355,22 @@
                     <h6 class="footer-title">Get in Touch with Us</h6>
                     <ul class="footer-link-list _icon">
                         <li class="link-item">
-                            <img src="{{ asset('assets/icons/mark-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
+                            <img src="{{ asset('assets/icons/mark-stroke.svg') }}" class="svg-inject svg-icon"
+                                alt="" />
                             <a class="link" href="#">
-                                <span>832 Lumumba Drive, San Road  94107, Nairobi</span>
+                                <span>832 Lumumba Drive, San Road 94107, Nairobi</span>
                             </a>
                         </li>
                         <li class="link-item">
-                            <img src="{{ asset('assets/icons/phone-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
+                            <img src="{{ asset('assets/icons/phone-stroke.svg') }}" class="svg-inject svg-icon"
+                                alt="" />
                             <a class="link" href="#">
                                 <span>+254718052608</span>
                             </a>
                         </li>
                         <li class="link-item">
-                            <img src="{{ asset('assets/icons/envelope-stroke.svg') }}" class="svg-inject svg-icon" alt="" />
+                            <img src="{{ asset('assets/icons/envelope-stroke.svg') }}" class="svg-inject svg-icon"
+                                alt="" />
                             <a class="link" href="#">
                                 <span>johnmambo794@gmail.com</span>
                             </a>

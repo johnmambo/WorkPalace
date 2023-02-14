@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\User;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\JobCategory;
 use App\Models\Job;
+
+use Brian2694\Toastr\Facades\Toastr;
 
 class UserController extends Controller
 {
@@ -19,32 +22,53 @@ class UserController extends Controller
         return $user;
     }
 
-    public function userdash(){
+    public function userdash()
+    {
         return view('user.dashboard');
     }
-    public function newJob(){
+    public function newJob()
+    {
         return view('user.jobs.create-new-job');
     }
-   
+    public function newJobattachments($slug)
+    {
+       $checktask = Job::where(['job_id'=>$slug, 'user_id'=>auth()->user()->id])->first();
+       if($checktask){
+            return view('user.jobs.attachments', compact('slug'));
+       }else{
+        Toastr::warning('An error occured', 'Alert', ["positionClass" => "toast-bottom-right"]);
+        return redirect()->route('user.alljobs');
+       }
+    }
+    public function publishjob($slug)
+    {
+       $checktask = Job::where(['job_id'=>$slug, 'user_id'=>auth()->user()->id])->first();
+       $checktask->status="active";
+       $checktask->save();
+        Toastr::success('Job is now visible on the main website', 'Congrats', ["positionClass" => "toast-bottom-right"]);
+        return redirect()->route('user.alljobs');
+
+    }
     public function allJobs()
     {
-       
+
         $user = Auth::user();
         $userId = $user->id;
-        $jobs = Job::where('user_id', $userId)->get();           
-     
+        $jobs = Job::where('user_id', $userId)->get();
+
         return view('user.jobs.alljobs', compact('jobs'));
     }
 
-    public function singleJob($id){
-    
+    public function singleJob($id)
+    {
+
         $job = Job::findOrFail($id);
         $jobcategories = JobCategory::all();
 
         return view('user.jobs.single-job', compact(['job', 'jobcategories']));
-
     }
-    public function UpdateSingleJob( Request $request, $id){
+    public function UpdateSingleJob(Request $request, $id)
+    {
         $request->validate([
             'headline' => 'required',
             'title' => 'required',
@@ -52,7 +76,7 @@ class UserController extends Controller
             'skills' => 'required',
             'hourly_pay' => 'required',
             'project_pay' => 'required',
-            
+
         ]);
         $job = Job::findOrFail($id);
         $job->headline = $request->headline;
@@ -66,10 +90,9 @@ class UserController extends Controller
         $job->status = 'draft';
         $job->save();
         return redirect()->route('user.alljobs')->with('success', 'Job Details updated successfully');
-        
-        
     }
-    public function DeleteSingleJob($id){
+    public function DeleteSingleJob($id)
+    {
         $job = Job::findOrFail($id);
         $job->delete();
         return redirect()->route('user.alljobs')->with('success', 'Job Deleted successfully');
