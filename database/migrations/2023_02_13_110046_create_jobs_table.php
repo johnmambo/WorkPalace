@@ -17,15 +17,17 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->nullable()->unsigned();
             $table->string('headline');
-            $table->string('title'); 
+            $table->string('title');
+            $table->string('job_id')->unique();
             $table->bigInteger('category_id')->nullable()->unsigned();
-            $table->string('description'); 
+            $table->string('description');
             $table->string('skills');
-            $table->string('hourly_pay')->nullabe(); 
-            $table->string('project_pay')->nullabe();
+            $table->string('payment_category')->nullabe();
+            $table->string('pay_rate')->nullabe();
             $table->string('status')->nullable();
             $table->foreign('category_id')->references('id')->on('job_categories')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamp('task_deadline')->nullable();
             $table->timestamps();
         });
     }
