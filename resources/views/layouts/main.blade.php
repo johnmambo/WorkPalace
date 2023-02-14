@@ -29,7 +29,7 @@
         </div><!-- sidebar-header -->
         <div id="sidebarMenu" class="sidebar-body">
             <div class="nav-group show">
-                <a href="#" class="nav-label">Dashboard</a>
+                {{-- <a href="#" class="nav-label">Dashboard</a> --}}
                 <ul class="nav nav-sidebar">
                     @role('user')
                         <li class="nav-item">
@@ -95,32 +95,43 @@
                         </li>
                     @endrole
                     @role('freelancer')
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="ri-shopping-bag-3-line"></i>
-                            <span>Jobs</span></a>
-
-                        <nav class="nav nav-sub1">
-                            <a href="#" class="nav-sub-link">All Jobs</a>
-                            <a href="#" class="nav-sub-link">My Completed Jobs</a>
-                            <a href="#"class="nav-sub-link">My Pending Jobs</a>
-                        </nav>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="ri-coin-line"></i>
-                            <span>Payments </span></a>
-                        <nav class="nav nav-sub2">
-                            <a href="#" class="nav-sub-link">All my Payments</a>
-                            <a href="#" class="nav-sub-link">Completed Payments</a>
-                            <a href="#"class="nav-sub-link">Pending Payments</a>
-                        </nav>
-                    </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-folder-2-line"></i> <span>Dashboard</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-mail-send-line"></i> <span>Posted
+                                    Jobs</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-calendar-line"></i> <span>Completed
+                                    Tasks</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../apps/chat.html" class="nav-link"><i class="ri-question-answer-line"></i>
+                                <span>Pending Tasks</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-contacts-book-line"></i>
+                                <span>All Payments</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Completed
+                                    Payments</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Pending
+                                    Payments</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Disputed
+                                    Payments</span></a>
+                        </li>
                     @endrole
                 </ul>
             </div><!-- sidebar-body -->
 
         </div><!-- sidebar -->
-
+    </div>
         <div class="header-main px-3 px-lg-4">
             <a id="menuSidebar" href="#" class="menu-link me-3 me-lg-4"><i class="ri-menu-2-fill"></i></a>
 
@@ -150,15 +161,14 @@
 
             <div class="dropdown dropdown-notification ms-3 ms-xl-4">
                 <a href="#" class="dropdown-link" data-bs-toggle="dropdown"
-                    data-bs-auto-close="outside"><small>3</small><i class="ri-notification-3-line"></i></a>
+                    data-bs-auto-close="outside"><small>1</small><i class="ri-notification-3-line"></i></a>
                 <div class="dropdown-menu dropdown-menu-end mt-10-f me--10-f">
                     <div class="dropdown-menu-header">
                         <h6 class="dropdown-menu-title">Notifications</h6>
                     </div><!-- dropdown-menu-header -->
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <div class="avatar online"><img
-                                    src="http://themepixels.me/demo/dashbyte/assets/img/img10.jpg" alt="">
+                            <div class="avatar online"><img src="" alt="">
                             </div>
                             <div class="list-group-body">
                                 <p><strong>Dominador Manuel</strong> and <strong>100 other people</strong> reacted to
@@ -168,65 +178,28 @@
                                 <span>Aug 20 08:55am</span>
                             </div><!-- list-group-body -->
                         </li>
-                        <li class="list-group-item">
-                            <div class="avatar online"><img
-                                    src="http://themepixels.me/demo/dashbyte/assets/img/img11.jpg" alt="">
-                            </div>
-                            <div class="list-group-body">
-                                <p><strong>Angela Ighot</strong> tagged you and <strong>9 others</strong> in a post.</p>
-                                <span>Aug 18 10:30am</span>
-                            </div><!-- list-group-body -->
-                        </li>
-                        <li class="list-group-item">
-                            <div class="avatar"><span class="avatar-initial bg-primary">a</span></div>
-                            <div class="list-group-body">
-                                <p>New listings were added that match your search alert <strong>house for rent</strong>
-                                </p>
-                                <span>Aug 15 08:10pm</span>
-                            </div><!-- list-group-body -->
-                        </li>
-                        <li class="list-group-item">
-                            <div class="avatar online"><img
-                                    src="http://themepixels.me/demo/dashbyte/assets/img/img14.jpg" alt="">
-                            </div>
-                            <div class="list-group-body">
-                                <p>Reminder: <strong>Jerry Cuares</strong> invited you to like <strong>Cuares Surveying
-                                        Services</strong>.
-                                    <br><a href="#">Accept</a> or <a href="#">Decline</a>
-                                </p>
-                                <span>Aug 14 11:50pm</span>
-                            </div><!-- list-group-body -->
-                        </li>
-                        <li class="list-group-item">
-                            <div class="avatar online"><img src="assets/img/img15.jpg" alt=""></div>
-                            <div class="list-group-body">
-                                <p><strong>Dyanne Aceron</strong> reacted to your post <strong>King of the Bed</strong>.
-                                </p>
-                                <span>Aug 10 05:30am</span>
-                            </div><!-- list-group-body -->
-                        </li>
+
                     </ul>
                     <div class="dropdown-menu-footer"><a href="#">Show all Notifications</a></div>
                 </div><!-- dropdown-menu -->
             </div><!-- dropdown -->
             <div class="dropdown dropdown-profile ms-3 ms-xl-4">
                 <a href="#" class="dropdown-link" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                    <div class="avatar online"><img src="assets/img/img1.jpg" alt=""></div>
+                    <div class="avatar online"><img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}"
+                            alt=""></div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end mt-10-f">
                     <div class="dropdown-menu-body">
-                        <div class="avatar avatar-xl online mb-3"><img src="assets/img/img1.jpg" alt="">
+                        <div class="avatar avatar-xl online mb-3"><img
+                                src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt="">
                         </div>
-                        <h5 class="mb-1 text-dark fw-semibold">Shaira Diaz</h5>
+                        <h5 class="mb-1 text-dark fw-semibold">{{ Auth::user()->name }}</h5>
 
                         <nav class="nav">
-                            <a href="#"><i class="ri-edit-2-line"></i> Edit Profile</a>
                             <a href="#"><i class="ri-profile-line"></i> View Profile</a>
                         </nav>
                         <hr>
                         <nav class="nav">
-                            <a href="#"><i class="ri-question-line"></i> Help Center</a>
-                            <a href="#"><i class="ri-lock-line"></i> Privacy Settings</a>
                             <a href="#"><i class="ri-user-settings-line"></i> Account Settings</a>
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
@@ -246,7 +219,7 @@
         <div class="main main-app p-3 p-lg-4">
 
 
-            <div class="row g-3" style="min-height: 50vh">
+            <div class="row g-3" style="min-height: 80vh">
                 @yield('content')
             </div><!-- row -->
 
