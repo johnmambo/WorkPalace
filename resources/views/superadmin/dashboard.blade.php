@@ -77,6 +77,34 @@
         <div class="card card-one">
             <div class="card-header">
                 <h6 class="card-title">Jobs Trend</h6>
+                <script type="text/javascript">
+                    google.charts.load('current', {
+                        'packages': ['bar']
+                    });
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Job ID', 'Price', 'Headline'],
+
+                            @php
+                                foreach ($graphJobs as $job) {
+                                    echo "['" . $job->id . "', '" . $job->pay_rate . "', '" . $job->headline . "'],";
+                                }
+                            @endphp
+                        ]);
+
+                        var options = {
+                            chart: {
+                                title: 'Bar Graph | Price',
+                                subtitle: 'Job ID, and Price: @php echo $graphJobs[0]->created_at @endphp',
+                            },
+                            bars: 'vertical'
+                        };
+                        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+                        chart.draw(data, google.charts.Bar.convertOptions(options));
+                    }
+                </script>
 
             </div><!-- card-header -->
             <div class="card-body">
@@ -85,13 +113,13 @@
                 <div class="p-2">
                     <div class="row g-3">
                         <div class="col-sm-6">
-                            <h3 class="card-value mb-2"><span></span>83</h3>
-                            <label class="card-title fw-semibold text-dark mb-2">Posted This Month</label>
+                            <h3 class="card-value mb-2"><span></span>{{ $jobsThisWeek->count()}}</h3>
+                            <label class="card-title fw-semibold text-dark mb-2">Posted This Week</label>
 
                         </div><!-- col -->
                         <div class="col-sm-6">
-                            <h3 class="card-value mb-2"><span></span>19</h3>
-                            <label class="card-title fw-semibold text-dark mb-2">Posted Last Month</label>
+                            <h3 class="card-value mb-2"><span></span>{{ $jobsThisMonth->count()}}</h3>
+                            <label class="card-title fw-semibold text-dark mb-2">Posted This Month</label>
 
                         </div><!-- col -->
                     </div><!-- row -->

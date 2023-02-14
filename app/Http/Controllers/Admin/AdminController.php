@@ -28,8 +28,11 @@ class AdminController extends Controller
         $completeTasks = Job::where('status', 'complete')->get();
         $tasksInProgress = Job::where('status', 'inprogress')->get();
         $jobsThisWeek = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
-
-        return view('superadmin.dashboard', compact('freelancers', 'employers', 'completeTasks', 'tasksInProgress', 'jobsThisWeek'));
+        $jobsThisMonth = Job::select('*')
+            ->whereMonth('created_at', Carbon::now()->month)
+            ->get();
+        $graphJobs = Job::all();
+        return view('superadmin.dashboard', compact('freelancers', 'employers', 'completeTasks', 'tasksInProgress', 'jobsThisWeek', 'graphJobs', 'jobsThisMonth'));
     }
     public function createcategory(){
         return view('superadmin.jobs.createcategory');

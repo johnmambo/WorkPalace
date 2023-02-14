@@ -23,8 +23,30 @@ class UserController extends Controller
     }
 
     public function userdash()
+    
+
     {
-        return view('user.dashboard');
+        $postedjobs  = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'active'])
+                            ->get();
+
+        $completedtasks = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'complete'])
+                            ->get();
+        $tasksInProgress = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'pending'])
+                            ->get();
+        $tasksInDrafts = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'draft'])
+                            ->get();
+        $recentTasks = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'complete'])
+                            ->get();
+        $completedrecenttasks = Job::query()->where(['user_id'=>auth()->user()->id,'status'=>'complete'])
+                            ->orderBy('created_at', 'desc')->take(5)->get();
+ 
+
+        return view('user.dashboard', compact('postedjobs', 'completedtasks', 'tasksInProgress', 'tasksInDrafts', 'completedrecenttasks'));
     }
     public function newJob()
     {
