@@ -5,20 +5,34 @@
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">All Jobs</label>
-                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i> 8,327</h3>
+                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i>
+                    @foreach ($jobs as $item)
+                    {{ $item->count() }}
+
+                </h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
     </div><!-- col -->
+
+
+
     <div class="col-6 col-xl-3">
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">Active Tasks</label>
-                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i> <span>$</span>12,105</h3>
+
+                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i>
+                    
+                    
+                        {{ $item->count() }}
+                    @endforeach
+                </h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
     </div><!-- col -->
+
     <div class="col-6 col-xl-3">
         <div class="card card-one">
             <div class="card-body">
@@ -180,7 +194,7 @@
                         <div class="earning-item">
                             <div class="earning-icon bg-twitter"><i class="ri-pie-chart-line"></i></div>
                             <h4><span>$</span>2340</h4>
-                            <label>Pending  Payments</label>
+                            <label>Pending Payments</label>
                         </div><!-- earning-item -->
                     </div><!-- col -->
                     <div class="col">
@@ -242,7 +256,7 @@
                         </tbody>
                     </table>
                 </div><!-- table-responsive -->
-                
+
             </div><!-- card-body -->
         </div><!-- card -->
     </div><!-- col -->

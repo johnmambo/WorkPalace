@@ -96,21 +96,19 @@
                         <li class="nav-item">
                             <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>Draft Tasks
                                 </span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
-                                Payments</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
-                                Employers</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
-                                Freelancers</span></a>
-                    </li>
-
-                      
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                    Payments</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                    Employers</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                                    Freelancers</span></a>
+                        </li>
                     @endrole
                     @role('freelancer')
                         <li class="nav-item">
@@ -122,7 +120,7 @@
                                     Jobs</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-calendar-line"></i> <span>Completed
+                            <a href="{{ route('freelancer.completejobs')}}" class="nav-link"><i class="ri-calendar-line"></i> <span>Completed
                                     Tasks</span></a>
                         </li>
                         <li class="nav-item">
@@ -256,9 +254,9 @@
     <script src="{{ asset('assets/admin/lib/jquery.flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('assets/admin/lib/chart.js/chart.min.js') }}"></script>
 
-        <script src="{{ asset('assets/admin/assets/js/script.js') }}"></script>
-        <script src="{{ asset('assets/admin/assets/js/db.product.js') }}"></script>
-        @livewireScripts
+    <script src="{{ asset('assets/admin/assets/js/script.js') }}"></script>
+    <script src="{{ asset('assets/admin/assets/js/db.product.js') }}"></script>
+    @livewireScripts
 
 </body>
 

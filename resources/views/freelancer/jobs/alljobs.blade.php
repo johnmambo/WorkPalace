@@ -20,7 +20,7 @@
                             <th>Headline</th>
                             <th>Title</th>
                             <th>Status</th>
-                            {{-- <th>Action</th> --}}
+                            <th>Action</th>
                         </thead>
                         <tbody>
                             <div class="product-wrapper">
@@ -31,7 +31,7 @@
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->status }}</td>
                                         <td>
-                                            {{-- <a href="{{ route('freelancer.single-job',$job->id) }}"><button class="btn btn-sm btn-primary">View Job</button></a> --}}
+                                            <a href="{{ route('freelancer.singlejob' ,$job->id) }}"><button class="btn btn-sm btn-primary">View Job</button></a>
                                             {{-- <a href="{{ route('user.delete-single-job',$job->id) }}"><button class="btn btn-sm btn-danger">Delete</button></a>                                            --}}
                                             
                                         </td>
