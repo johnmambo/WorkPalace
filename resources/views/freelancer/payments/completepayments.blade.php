@@ -14,7 +14,7 @@
                 </div><!-- card-header -->
                 <div class="card-body p-3">
 
-                    <table class="table">
+                    <table id="example" class="display nowrap table-bodered" style="width:100%">
                         <thead>
                             <th>id</th>
                             <th>Task_id</th>
@@ -24,10 +24,6 @@
                         <tbody>
                             <div class="product-wrapper">
                                
-                                    <tr>
-                                        
-                                    </tr>
-                            
                             </div>
 
                         </tbody>

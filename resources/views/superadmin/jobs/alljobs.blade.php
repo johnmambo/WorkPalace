@@ -19,7 +19,7 @@
                 </div><!-- card-header -->
                 <div class="card-body p-3">
 
-                    <table class="table">
+                    <table id="example" class="display nowrap table-bodered" style="width:100%">
                         <thead>
                             <th>id</th>
                             <th>Headline</th>

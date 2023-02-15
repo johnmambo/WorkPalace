@@ -132,25 +132,27 @@
         <div class="card card-one">
             <div class="card-header">
                 <h6 class="card-title">Recent 5 Jobs</h6>
-                <nav class="nav nav-icon nav-icon-sm ms-auto">
-                    <a href="" class="nav-link"><i class="ri-refresh-line"></i></a>
-                    <a href="" class="nav-link"><i class="ri-more-2-fill"></i></a>
-                </nav>
+                
             </div><!-- card-header -->
             <div class="card-body p-0">
                 <ul class="people-group">
-                    <li class="people-item">
-                        <div class="avatar"><img src="../assets/img/img6.jpg" alt=""></div>
-                        <div class="people-body">
-                            <h6><a href="">Allan Rey Palban</a></h6>
-                            <span>Customer ID#00222</span>
-                        </div><!-- people-body -->
-                        <nav class="nav nav-icon">
-                            <a href="" class="nav-link"><i class="ri-user-star-line"></i></a>
-                            <a href="" class="nav-link"><i class="ri-contacts-line"></i></a>
-                        </nav>
-                    </li>
-
+                    @foreach ($recentfiveTasks as $task)
+                        <li class="people-item">
+                            <div class="avatar"><span class="avatar-initial bg-teal fs-20"></span></div>
+                            <div class="people-body">
+                                <h6><a href="{{ route('superadmin.viewjob', $task->id) }}">{{ str_limit(strip_tags($task->title), 30) }}
+                                        @if (strlen(strip_tags($task->title)) > 30)
+                                            ....
+                                        @endif
+                                    </a></h6>
+                                <span>Task ID - {{ $task->job_id }}</span>
+                            </div>
+                            <div class="text-end">
+                                <div class="fs-sm"> {{ $task->payment_category }} - $ {{ $task->pay_rate }}</div>
+                                <span class="d-block fs-xs text-success">{{ $task->status }}</span>
+                            </div>
+                        </li>
+                    @endforeach
 
                 </ul>
             </div><!-- card-body -->
@@ -170,23 +172,28 @@
             </div><!-- card-header -->
             <div class="card-body p-0">
                 <ul class="people-group">
-                    <li class="people-item">
-                        <div class="avatar"><span class="avatar-initial bg-teal fs-20"><i
-                                    class="ri-shopping-cart-line"></i></span></div>
-                        <div class="people-body">
-                            <h6><a href="">Purchase from #10322</a></h6>
-                            <span>Oct 21, 2023, 3:30pm</span>
-                        </div><!-- people-body -->
-                        <div class="text-end">
-                            <div class="fs-sm">+ $250.00</div>
-                            <span class="d-block fs-xs text-success">Completed</span>
-                        </div>
-                    </li>
+                    @foreach ($recentfivecompleteTasks as $task)
+                        <li class="people-item">
+                            <div class="avatar"><span class="avatar-initial bg-teal fs-20"></span></div>
+                            <div class="people-body">
+                                <h6><a href="{{ route('superadmin.viewjob', $task->id) }}">{{ str_limit(strip_tags($task->title), 30) }}
+                                        @if (strlen(strip_tags($task->title)) > 30)
+                                            ....
+                                        @endif
+                                    </a></h6>
+                                <span>Task ID - {{ $task->job_id }}</span>
+                            </div>
+                            <div class="text-end">
+                                <div class="fs-sm"> {{ $task->payment_category }} - $ {{ $task->pay_rate }}</div>
+                                <span class="d-block fs-xs text-success">{{ $task->status }}</span>
+                            </div>
+                        </li>
+                    @endforeach
 
                 </ul>
             </div><!-- card-body -->
             <div class="card-footer d-flex justify-content-center">
-                <a href="" class="fs-sm">See My Tasks</a>
+                <a href="{{ route('superadmin.alljobs')}}" class="fs-sm">See All Tasks</a>
             </div><!-- card-footer -->
         </div><!-- card -->
     </div><!-- col -->
@@ -225,7 +232,7 @@
     <div class="col-xl-12">
         <div class="card card-one">
             <div class="card-header">
-                <h6 class="card-title">Most Recent Earnings</h6>
+                <h6 class="card-title">Most Recent Payments</h6>
                 <nav class="nav nav-icon nav-icon-sm ms-auto">
                     <a href="" class="nav-link"><i class="ri-refresh-line"></i></a>
                     <a href="" class="nav-link"><i class="ri-more-2-fill"></i></a>

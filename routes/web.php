@@ -82,4 +82,7 @@ Route::middleware(['auth', 'role:user'])->name('user.')->prefix('user')->group(f
     Route::get('jobs/single-job/{id}', [UserController::class, 'singleJob'])->name('single-job');
     Route::post('jobs/update-single-job/{id}', [UserController::class, 'UpdateSingleJob'])->name('update-single-job');
     Route::get('jobs/delete-single-job/{id}', [UserController::class, 'DeleteSingleJob'])->name('delete-single-job');
+    Route::get('/jobsinprogress', [UserController::class, 'jobsinprogress'])->name('jobsinprogress');
+    Route::get('/completejobs', [UserController::class, 'completejobs'])->name('completejobs');
+    Route::get('/allpayments', [UserController::class, 'allpayments'])->name('allpayments');
 });

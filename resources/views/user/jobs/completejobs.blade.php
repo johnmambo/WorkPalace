@@ -1,16 +1,12 @@
 @extends('layouts.main');
-@section('title', 'All Complete-Jobs')
+@section('title', 'My Completed Jobs')
 @section('content')
 
     <div>
         <div class="col-xl-12">
             <div class="card card-one">
                 <div class="card-header">
-                    <h6 class="card-title">All Complete Jobs</h6>
-                    <nav class="nav nav-icon nav-icon-sm ms-auto">
-                        <a href="#" class="nav-link"><i class="ri-refresh-line"></i></a>
-                        <a href="#" class="nav-link"><i class="ri-more-2-fill"></i></a>
-                    </nav>
+                    <h6 class="card-title">My Completed Jobs</h6>
                 </div><!-- card-header -->
                 <div class="card-body p-3">
 
@@ -31,8 +27,8 @@
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->status }}</td>
                                         <td>
-                                            <a href="{{ route('superadmin.singlejob' ,$job->id) }}"><button class="btn btn-sm btn-primary">View Job</button></a>
-                                           
+                                            <a href="{{ route('user.single-job',$job->id) }}"><button class="btn btn-sm btn-primary">Edit</button></a>
+                                            <a href="{{ route('user.delete-single-job',$job->id) }}"><button class="btn btn-sm btn-danger">Delete</button></a>                                           
                                             
                                         </td>
                                     </tr>

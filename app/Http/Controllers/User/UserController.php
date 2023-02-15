@@ -121,4 +121,35 @@ class UserController extends Controller
         $job->delete();
         return redirect()->route('user.alljobs')->with('success', 'Job Deleted successfully');
     }
+
+    public function draftjobs()
+    {
+        $draftjobs = Job::query()
+        ->where(['user_id'=>auth()->user()->id,'status'=>'draft'])
+        ->get();
+        return view('user.jobs.draftjobs', compact('draftjobs'));
+
+    }
+    public function jobsinprogress()
+    {
+        $jobsinprogress = Job::query()
+        ->where(['user_id'=>auth()->user()->id,'status'=>'inprogress'])
+        ->get();
+        return view('user.jobs.jobsinprogress', compact('jobsinprogress'));
+
+    }
+    public function completejobs()
+    {
+        $completejobs = Job::query()
+        ->where(['user_id'=>auth()->user()->id,'status'=>'complete'])
+        ->get();
+        return view('user.jobs.completejobs', compact('completejobs'));
+
+    }
+    public function allpayments()
+    {
+        
+        return view('user.payments.allpayments');
+
+    }
 }

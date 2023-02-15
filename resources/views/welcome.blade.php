@@ -259,7 +259,7 @@
             <div class="row py-20 py-xl-80">
                 <div class="col-12 col-xl-4 footer-widget about">
                     <div class="footer-brand">
-                        <img src="{{ asset('assets/logo.png') }}" alt="logo" />
+                        <img src="{{ asset('assets/prof.pngb') }}" alt="logo" />
                     </div>
                     <p class="footer-description mt-34">StudyProfessors is an freelancing platform headquartered in Nairobi,
                         Kenya. The company was formed in 2023 after the merger of Company A. and Company B.</p>

@@ -58,16 +58,16 @@
                                 <span>Draft Jobs</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-contacts-book-line"></i>
+                            <a href="{{ route('user.completejobs')}}" class="nav-link"><i class="ri-contacts-book-line"></i>
                                 <span>Completed Jobs</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>In Progress
+                            <a href="{{ route('user.jobsinprogress')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>In Progress
                                     Tasks
                                 </span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
+                            <a href="{{ route('user.allpayments')}}" class="nav-link"><i class="ri-checkbox-multiple-line"></i> <span>All
                                     Payments</span></a>
                         </li>
                     @endrole

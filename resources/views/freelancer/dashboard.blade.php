@@ -157,7 +157,7 @@
                                         @endif
                                     </a></h6>
                                 <span>Task ID - {{ $task->job_id }}</span>
-                            </div><!-- people-body -->
+                            </div>
                             <div class="text-end">
                                 <div class="fs-sm"> {{ $task->payment_category }} - $ {{ $task->pay_rate }}</div>
                                 <span class="d-block fs-xs text-success">{{ $task->status }}</span>
@@ -167,12 +167,12 @@
 
 
                 </ul>
-            </div><!-- card-body -->
+            </div>
             <div class="card-footer d-flex justify-content-center">
                 <a href="{{ route('freelancer.completejobs') }}" class="fs-sm">See My Tasks</a>
-            </div><!-- card-footer -->
-        </div><!-- card -->
-    </div><!-- col -->
+            </div>
+        </div>
+    </div>
     <div class="col-md-6 col-xl-4">
         <div class="card card-one">
             <div class="card-header">

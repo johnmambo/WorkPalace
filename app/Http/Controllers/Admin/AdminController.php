@@ -24,15 +24,26 @@ class AdminController extends Controller
     public function superadmindash(){
 
         $freelancers = User::whereRoleIs('freelancer')->get();
+
         $employers = User::whereRoleIs('user')->count();
+
         $completeTasks = Job::where('status', 'complete')->get();
+
+        $recentfivecompleteTasks = Job::where('status', 'complete')->orderBy('created_at', 'desc')->take(5)->get();
+
+        $recentfiveTasks = Job::where('status', 'active')->orderBy('created_at', 'desc')->take(5)->get();
+
         $tasksInProgress = Job::where('status', 'inprogress')->get();
+
         $jobsThisWeek = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+
         $jobsThisMonth = Job::select('*')
             ->whereMonth('created_at', Carbon::now()->month)
             ->get();
+
         $graphJobs = Job::all();
-        return view('superadmin.dashboard', compact('freelancers', 'employers', 'completeTasks', 'tasksInProgress', 'jobsThisWeek', 'graphJobs', 'jobsThisMonth'));
+
+        return view('superadmin.dashboard', compact('freelancers', 'employers', 'completeTasks', 'tasksInProgress', 'jobsThisWeek', 'graphJobs', 'jobsThisMonth', 'recentfivecompleteTasks', 'recentfiveTasks'));
     }
     public function createcategory(){
         return view('superadmin.jobs.createcategory');

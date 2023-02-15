@@ -19,7 +19,7 @@ class FreelancerController extends Controller
 
         $activejobs  = Job::where(['freelancer_assigned_id'=>auth()->user()->id,'status'=>'assigned'])->get();
 
-        $completetasks  = Job::where('status', 'complete')->get();
+        $completetasks  = Job::where(['freelancer_assigned_id'=>auth()->user()->id,'status'=>'complete'])->get();
 
         $recentTasks = Job::orderBy('created_at', 'desc')->take(5)->get();
         $completedfivetasks = Job::query()->where(['freelancer_assigned_id'=>auth()->user()->id,'status'=>'complete'])->orderBy('created_at', 'desc')->take(5)->get();
@@ -40,12 +40,13 @@ class FreelancerController extends Controller
    
     public function allJobs(){
         
-        $jobs = Job::all();  
+        $jobs  = Job::where('status', 'active')->get();
 
         return view('freelancer.jobs.alljobs', compact('jobs'));
     }
 
-    public function singlejob($id){
+    public function singlejob($id)
+    {
 
         $job = Job::findOrFail($id);
        
@@ -54,28 +55,23 @@ class FreelancerController extends Controller
     }
 
 
-    public function completejobs(){
-        
-        $user = Auth::user();
+    public function completejobs()
+    
+    {
+        $job  = Job::where(['freelancer_assigned_id'=>auth()->user()->id,'status'=>'complete'])->get();
 
         
-            $job = Job::where('status', 'complete')
-             ->where('user_id', auth()->user()->id)
-            //  ->where('user_id', Auth::id())
-             ->get();
+        
 
         return view('freelancer.jobs.compeletejobs', compact('job'));
     }
 
 
-    public function pendingjobs(){
-        
-        $user = Auth::user();
+    public function pendingjobs()
+    {
+        $job  = Job::where(['freelancer_assigned_id'=>auth()->user()->id,'status'=>'complete'])->get();
 
-        $job= Job::where([
-                            ['id', $user->id],
-                            ['status', 'pending']
-                            ])->get();
+        
 
         return view('freelancer.jobs.pendingjobs', compact('job'));
     }
