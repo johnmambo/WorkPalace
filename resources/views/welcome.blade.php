@@ -16,7 +16,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('assets/welcome/dist/css/style.css') }}" />
 
-    <title>Work Palace</title>
+    <title>StudyProfessors</title>
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-xl">
         <div class="container-xxl justify-content-md-start">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('assets/logo.png') }}" alt="" />
+                <img src="{{ asset('assets/prof.png') }}" style="height: 120px; width: 200px;" alt="" />
             </a>
             <!-- /.navbar-brand -->
 
@@ -93,8 +93,7 @@
         <div class="container-xxl">
             <div class="row">
                 <div class="col-12 col-lg-6 my-34 my-lg-80 my-xl-120 my-xxl-180 order-2 order-lg-1">
-                    <h1 class="heading-header-1 mb-0">Find your dream jobs through <span class="text-primary">Work
-                            Palace</span> Easily</h1>
+                    <h1 class="heading-header-1 mb-0">Find your dream jobs through <span class="text-primary">StudyProfessors</span> Easily</h1>
                     <!-- /.heading-header -->
 
                     <form class="ms-auto mt-60" role="search" action="#" method="get">
@@ -265,9 +264,9 @@
             <div class="row py-20 py-xl-80">
                 <div class="col-12 col-xl-4 footer-widget about">
                     <div class="footer-brand">
-                        <img src="{{ asset('assets/logo.png') }}" alt="logo" />
+                        <img src="{{ asset('assets/prof.pngb') }}" alt="logo" />
                     </div>
-                    <p class="footer-description mt-34">WorkPalace is an freelancing platform headquartered in Nairobi,
+                    <p class="footer-description mt-34">StudyProfessors is an freelancing platform headquartered in Nairobi,
                         Kenya. The company was formed in 2023 after the merger of Company A. and Company B.</p>
                     <ul class="social-btn-group mt-34">
                         <li class="social-item">
@@ -306,7 +305,7 @@
                 <!-- /.col -->
 
                 <div class="col-12 col-lg-4 col-xl footer-widget link-list mt-34 mt-xl-0">
-                    <h6 class="footer-title">WorkPalace</h6>
+                    <h6 class="footer-title">StudyProfessors</h6>
                     <ul class="footer-link-list">
                         <li class="link-item">
                             <a class="link" href="#">Why Us</a>
@@ -390,7 +389,7 @@
 
         <div class="border border-arsenic border-end-0 border-bottom-0 border-start-0">
             <div class="container-xxl d-grid d-lg-flex gap-12 gap-xl-0 justify-content-lg-between py-25">
-                <div class="fs-14 text-white text-center">WorkPalace - © 2023 All Rights Reserved
+                <div class="fs-14 text-white text-center">StudyProfessors - © 2023 All Rights Reserved
                 </div>
 
                 <div class="fs-14 text-white text-center">Made with ♥ by John Mambo</div>

@@ -1,12 +1,12 @@
 @extends('layouts.main');
-@section('title', 'All Jobs')
+@section('title', 'Tasks In Progress')
 @section('content')
 
     <div>
         <div class="col-xl-12">
             <div class="card card-one">
                 <div class="card-header">
-                    <h6 class="card-title">All Jobs</h6>
+                    <h6 class="card-title">Tasks In Progress</h6>
                 </div><!-- card-header -->
                 <div class="card-body p-3">
 
@@ -20,15 +20,15 @@
                         </thead>
                         <tbody>
                             <div class="product-wrapper">
-                                @foreach ($jobs as $key => $job)
+                                @foreach ($jobsinprogress as $key => $job)
                                     <tr>
                                         <td>{{ ++$key }}</td>
                                         <td>{{ $job->headline }}</td>
                                         <td>{{ $job->title }}</td>
                                         <td>{{ $job->status }}</td>
                                         <td>
-                                            <a href="{{ route('user.single-job',$job->id) }}"><button class="btn btn-sm btn-primary">Edit</button></a>
-                                            <a href="{{ route('user.delete-single-job',$job->id) }}"><button class="btn btn-sm btn-danger">Delete</button></a>                                           
+                                            <a href="{{ route('superadmin.singlejob' ,$job->id) }}"><button class="btn btn-sm btn-primary">View Job</button></a>
+                                           
                                             
                                         </td>
                                     </tr>

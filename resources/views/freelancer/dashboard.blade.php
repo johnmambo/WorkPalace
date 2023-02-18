@@ -1,24 +1,29 @@
 @extends('layouts.main')
 @section('title', 'Freelancer | Dashboard')
 @section('content')
+
     <div class="col-6 col-xl-3">
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">All Jobs</label>
-                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"></i> 8,327</h3>
+                <h3 class="card-value mb-1"><i class="ri-shopping-bag-3-line"> {{ $alljobs->count() }}</i>
+                </h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
     </div><!-- col -->
+
     <div class="col-6 col-xl-3">
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">Active Tasks</label>
-                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i> <span>$</span>12,105</h3>
+
+                <h3 class="card-value mb-1"><i class="ri-briefcase-4-line"></i>{{ $activejobs->count() }} </h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
     </div><!-- col -->
+
     <div class="col-6 col-xl-3">
         <div class="card card-one">
             <div class="card-body">
@@ -32,7 +37,7 @@
         <div class="card card-one">
             <div class="card-body">
                 <label class="card-title fs-sm fw-medium mb-1">Completed Tasks</label>
-                <h3 class="card-value mb-1"><i class="ri-bar-chart-box-line"></i> 6.28<span>%</span></h3>
+                <h3 class="card-value mb-1"><i class="ri-bar-chart-box-line"></i> {{ $completetasks->count() }}</h3>
 
             </div><!-- card-body -->
         </div><!-- card-one -->
@@ -45,20 +50,52 @@
             </div><!-- card-header -->
             <div class="card-body">
 
-                <div id="flotChart" class="flot-chart ht-300 mb-4"></div>
+
+
+                <div id="barchart_material" style="width: 100%; height: 500px;"></div>
+                <script type="text/javascript">
+                    google.charts.load('current', {
+                        'packages': ['bar']
+                    });
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Job ID', 'Price', 'Headline'],
+
+                            @php
+                                foreach ($graphJobs as $job) {
+                                    echo "['" . $job->id . "', '" . $job->pay_rate . "', '" . $job->headline . "'],";
+                                }
+                            @endphp
+                        ]);
+
+                        var options = {
+                            chart: {
+                                title: 'Bar Graph | Price',
+                                subtitle: 'Job ID, and Price: @php echo $graphJobs[0]->created_at @endphp',
+                            },
+                            bars: 'vertical'
+                        };
+                        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+                        chart.draw(data, google.charts.Bar.convertOptions(options));
+                    }
+                </script>
                 <div class="p-2">
                     <div class="row g-3">
                         <div class="col-sm-6">
-                            <h3 class="card-value mb-2"><span></span>83</h3>
+                            <h3 class="card-value mb-2"><span></span>{{ $jobsThisWeek->count() }}</h3>
+                            <label class="card-title fw-semibold text-dark mb-2">Posted This Week</label>
+
+
+
+                        </div>
+                        <div class="col-sm-6">
+                            <h3 class="card-value mb-2"><span></span>{{ $jobsThisMonth->count() }}</h3>
                             <label class="card-title fw-semibold text-dark mb-2">Posted This Month</label>
 
-                        </div><!-- col -->
-                        <div class="col-sm-6">
-                            <h3 class="card-value mb-2"><span></span>19</h3>
-                            <label class="card-title fw-semibold text-dark mb-2">Posted Last Month</label>
-
-                        </div><!-- col -->
-                    </div><!-- row -->
+                        </div>
+                    </div>
                 </div>
             </div><!-- card-body -->
         </div><!-- card -->
@@ -68,30 +105,34 @@
         <div class="card card-one">
             <div class="card-header">
                 <h6 class="card-title">Recent 5 Jobs</h6>
-                <nav class="nav nav-icon nav-icon-sm ms-auto">
-                    <a href="" class="nav-link"><i class="ri-refresh-line"></i></a>
-                    <a href="" class="nav-link"><i class="ri-more-2-fill"></i></a>
-                </nav>
+
             </div><!-- card-header -->
             <div class="card-body p-0">
                 <ul class="people-group">
-                    <li class="people-item">
-                        <div class="avatar"><img src="../assets/img/img6.jpg" alt=""></div>
-                        <div class="people-body">
-                            <h6><a href="">Allan Rey Palban</a></h6>
-                            <span>Customer ID#00222</span>
-                        </div><!-- people-body -->
-                        <nav class="nav nav-icon">
-                            <a href="" class="nav-link"><i class="ri-user-star-line"></i></a>
-                            <a href="" class="nav-link"><i class="ri-contacts-line"></i></a>
-                        </nav>
-                    </li>
+                    @foreach ($recentTasks as $task)
+                        <li class="people-item">
+                            <div class="avatar"><span class="avatar-initial bg-teal fs-20"></span></div>
+                            <div class="people-body">
+                                <h6><a href="{{ route('freelancer.singlejob', $task->id) }}">{{ str_limit(strip_tags($task->title), 30) }}
+                                        @if (strlen(strip_tags($task->title)) > 30)
+                                            ....
+                                        @endif
+                                    </a></h6>
+                                <span>Task ID - {{ $task->job_id }}</span>
+                            </div><!-- people-body -->
+                            <div class="text-end">
+                                <div class="fs-sm"> {{ $task->payment_category }} - $ {{ $task->pay_rate }}</div>
+                                <span class="d-block fs-xs text-success">{{ $task->status }}</span>
+                            </div>
+                        </li>
+                    @endforeach
+
 
 
                 </ul>
             </div><!-- card-body -->
             <div class="card-footer d-flex justify-content-center">
-                <a href="" class="fs-sm">See All Jobs</a>
+                <a href="{{ route('freelancer.postedjobs') }}" class="fs-sm">See All Jobs</a>
             </div><!-- card-footer -->
         </div><!-- card -->
     </div><!-- col -->
@@ -106,26 +147,32 @@
             </div><!-- card-header -->
             <div class="card-body p-0">
                 <ul class="people-group">
-                    <li class="people-item">
-                        <div class="avatar"><span class="avatar-initial bg-teal fs-20"><i
-                                    class="ri-shopping-cart-line"></i></span></div>
-                        <div class="people-body">
-                            <h6><a href="">Purchase from #10322</a></h6>
-                            <span>Oct 21, 2023, 3:30pm</span>
-                        </div><!-- people-body -->
-                        <div class="text-end">
-                            <div class="fs-sm">+ $250.00</div>
-                            <span class="d-block fs-xs text-success">Completed</span>
-                        </div>
-                    </li>
+                    @foreach ($completedfivetasks as $task)
+                        <li class="people-item">
+                            <div class="avatar"><span class="avatar-initial bg-teal fs-20"></span></div>
+                            <div class="people-body">
+                                <h6><a href="{{ route('freelancer.singlejob', $task->id) }}">{{ str_limit(strip_tags($task->title), 30) }}
+                                        @if (strlen(strip_tags($task->title)) > 30)
+                                            ....
+                                        @endif
+                                    </a></h6>
+                                <span>Task ID - {{ $task->job_id }}</span>
+                            </div>
+                            <div class="text-end">
+                                <div class="fs-sm"> {{ $task->payment_category }} - $ {{ $task->pay_rate }}</div>
+                                <span class="d-block fs-xs text-success">{{ $task->status }}</span>
+                            </div>
+                        </li>
+                    @endforeach
+
 
                 </ul>
-            </div><!-- card-body -->
+            </div>
             <div class="card-footer d-flex justify-content-center">
-                <a href="" class="fs-sm">See My Tasks</a>
-            </div><!-- card-footer -->
-        </div><!-- card -->
-    </div><!-- col -->
+                <a href="{{ route('freelancer.completejobs') }}" class="fs-sm">See My Tasks</a>
+            </div>
+        </div>
+    </div>
     <div class="col-md-6 col-xl-4">
         <div class="card card-one">
             <div class="card-header">
@@ -180,7 +227,7 @@
                         <div class="earning-item">
                             <div class="earning-icon bg-twitter"><i class="ri-pie-chart-line"></i></div>
                             <h4><span>$</span>2340</h4>
-                            <label>Pending  Payments</label>
+                            <label>Pending Payments</label>
                         </div><!-- earning-item -->
                     </div><!-- col -->
                     <div class="col">
@@ -242,7 +289,7 @@
                         </tbody>
                     </table>
                 </div><!-- table-responsive -->
-                
+
             </div><!-- card-body -->
         </div><!-- card -->
     </div><!-- col -->

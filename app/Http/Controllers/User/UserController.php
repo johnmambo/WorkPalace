@@ -23,8 +23,30 @@ class UserController extends Controller
     }
 
     public function userdash()
+    
+
     {
-        return view('user.dashboard');
+        $postedjobs  = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'active'])
+                            ->get();
+
+        $completedtasks = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'complete'])
+                            ->get();
+        $tasksInProgress = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'pending'])
+                            ->get();
+        $tasksInDrafts = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'draft'])
+                            ->get();
+        $recentTasks = Job::query()
+                            ->where(['user_id'=>auth()->user()->id,'status'=>'complete'])
+                            ->get();
+        $completedrecenttasks = Job::query()->where(['user_id'=>auth()->user()->id,'status'=>'complete'])
+                            ->orderBy('created_at', 'desc')->take(5)->get();
+ 
+
+        return view('user.dashboard', compact('postedjobs', 'completedtasks', 'tasksInProgress', 'tasksInDrafts', 'completedrecenttasks'));
     }
     public function newJob()
     {
@@ -90,11 +112,44 @@ class UserController extends Controller
         $job->status = 'draft';
         $job->save();
         return redirect()->route('user.alljobs')->with('success', 'Job Details updated successfully');
+        
     }
+    ///repeat
     public function DeleteSingleJob($id)
     {
         $job = Job::findOrFail($id);
         $job->delete();
         return redirect()->route('user.alljobs')->with('success', 'Job Deleted successfully');
+    }
+
+    public function draftjobs()
+    {
+        $draftjobs = Job::query()
+        ->where(['user_id'=>auth()->user()->id,'status'=>'draft'])
+        ->get();
+        return view('user.jobs.draftjobs', compact('draftjobs'));
+
+    }
+    public function jobsinprogress()
+    {
+        $jobsinprogress = Job::query()
+        ->where(['user_id'=>auth()->user()->id,'status'=>'inprogress'])
+        ->get();
+        return view('user.jobs.jobsinprogress', compact('jobsinprogress'));
+
+    }
+    public function completejobs()
+    {
+        $completejobs = Job::query()
+        ->where(['user_id'=>auth()->user()->id,'status'=>'complete'])
+        ->get();
+        return view('user.jobs.completejobs', compact('completejobs'));
+
+    }
+    public function allpayments()
+    {
+        
+        return view('user.payments.allpayments');
+
     }
 }
