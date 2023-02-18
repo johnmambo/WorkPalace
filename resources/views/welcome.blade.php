@@ -364,14 +364,14 @@
                             <img src="{{ asset('assets/icons/phone-stroke.svg') }}" class="svg-inject svg-icon"
                                 alt="" />
                             <a class="link" href="#">
-                                <span>+254718052608</span>
+                                <span>+2</span>
                             </a>
                         </li>
                         <li class="link-item">
                             <img src="{{ asset('assets/icons/envelope-stroke.svg') }}" class="svg-inject svg-icon"
                                 alt="" />
                             <a class="link" href="#">
-                                <span>johnmambo794@gmail.com</span>
+                                <span>email</span>
                             </a>
                         </li>
                     </ul>
@@ -387,7 +387,7 @@
                 <div class="fs-14 text-white text-center">StudyProfessors - © 2023 All Rights Reserved
                 </div>
 
-                <div class="fs-14 text-white text-center">Made with ♥ by John Mambo</div>
+                <div class="fs-14 text-white text-center">Made with ♥ </div>
             </div>
         </div>
     </footer>
