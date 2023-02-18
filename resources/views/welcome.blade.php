@@ -215,7 +215,12 @@
                 @empty
                 @endforelse
 
+
+
+
                 <!-- /.job-card-grid-harizontal-component -->
+
+
 
 
             </div>
